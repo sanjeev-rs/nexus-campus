@@ -1,0 +1,268 @@
+/* =========================================================
+   NEXUS TOPBAR
+   ========================================================= */
+
+.nexus-topbar {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  left: 272px;
+
+  height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 34px;
+
+  background:
+    rgba(255, 255, 255, 0.93);
+
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid #e3ebf3;
+
+  z-index: 900;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.topbar-title {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.topbar-title span {
+  color: #8da0b5;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.topbar-title h1 {
+  margin: 0;
+
+  color: #142b48;
+
+  font-family: Georgia, serif;
+
+  font-size: 22px;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.topbar-command {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2eaf2;
+  border-radius: 12px;
+
+  background: white;
+
+  color: #7c91a9;
+
+  cursor: pointer;
+}
+
+.topbar-user {
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 5px 12px 5px 6px;
+
+  border: 1px solid #e1e9f1;
+  border-radius: 13px;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.topbar-avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #1474df;
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.topbar-user-info {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 3px;
+}
+
+.topbar-user-info strong {
+  color: #344d68;
+
+  font-size: 10px;
+}
+
+.topbar-user-info span {
+  color: #92a4b8;
+
+  font-size: 8px;
+}
+
+.topbar-user > svg {
+  color: #9aabbd;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .nexus-topbar {
+    left: 0;
+
+    height: 76px;
+
+    padding: 0 20px;
+  }
+
+  .topbar-title h1 {
+    font-size: 19px;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .topbar-user-info,
+  .topbar-command {
+    display: none;
+  }
+
+}
+
+/* =========================================================
+   TOPBAR TYPOGRAPHY — FINAL SCALE
+   ========================================================= */
+
+.topbar-title span {
+  font-size: 10px !important;
+  letter-spacing: 2.5px;
+}
+
+.topbar-title h1 {
+  font-size: 25px !important;
+}
+
+
+/* =========================================================
+   USER ACCOUNT
+   ========================================================= */
+
+.topbar-user {
+  min-height: 54px !important;
+  padding: 6px 14px 6px 7px !important;
+
+  gap: 12px;
+}
+
+.topbar-avatar {
+  width: 42px !important;
+  height: 42px !important;
+
+  font-size: 15px !important;
+}
+
+.topbar-user-info {
+  gap: 4px;
+}
+
+.topbar-user-info strong {
+  font-size: 12px !important;
+  line-height: 1.2;
+}
+
+.topbar-user-info span {
+  font-size: 10px !important;
+  line-height: 1.2;
+}
+
+.topbar-user > svg {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* =========================================================
+   TOPBAR — LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  .topbar-title span {
+    font-size: 10px !important;
+  }
+
+  .topbar-title h1 {
+    font-size: 26px !important;
+  }
+
+  .topbar-user {
+    min-height: 56px !important;
+  }
+
+  .topbar-avatar {
+    width: 43px !important;
+    height: 43px !important;
+  }
+
+  .topbar-user-info strong {
+    font-size: 12px !important;
+  }
+
+  .topbar-user-info span {
+    font-size: 10px !important;
+  }
+
+}

@@ -1,0 +1,305 @@
+/* =========================================================
+   NEXUS SIDEBAR
+   ========================================================= */
+
+.nexus-sidebar {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 272px;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  border-right: 1px solid #e1e9f2;
+
+  z-index: 1000;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.sidebar-brand {
+  height: 112px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 30px;
+
+  border-bottom: 1px solid #edf2f7;
+}
+
+.sidebar-logo {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #1474df;
+
+  color: white;
+
+  font-family: Georgia, serif;
+
+  font-size: 28px;
+  font-style: italic;
+
+  box-shadow:
+    0 10px 25px rgba(20, 116, 223, 0.22);
+}
+
+.sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.sidebar-brand-text strong {
+  color: #172d49;
+
+  font-family: Georgia, serif;
+
+  font-size: 18px;
+
+  letter-spacing: 5px;
+}
+
+.sidebar-brand-text span {
+  color: #91a4b9;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.sidebar-content {
+  flex: 1;
+
+  padding: 38px 18px;
+}
+
+.sidebar-section {
+  margin-bottom: 32px;
+}
+
+.sidebar-section-title {
+  display: block;
+
+  margin: 0 12px 12px;
+
+  color: #9aabbe;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.sidebar-item {
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 0 14px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: transparent;
+
+  color: #5e7693;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.sidebar-item svg {
+  flex-shrink: 0;
+
+  color: #8197af;
+
+  transition: color 0.25s ease;
+}
+
+.sidebar-item:hover {
+  background: #f3f7fc;
+
+  color: #176fda;
+}
+
+.sidebar-item:hover svg {
+  color: #176fda;
+}
+
+.sidebar-item.active {
+  background:
+    linear-gradient(
+      135deg,
+      #e4effd,
+      #edf5ff
+    );
+
+  color: #096bd7;
+}
+
+.sidebar-item.active svg {
+  color: #096bd7;
+}
+
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.sidebar-bottom {
+  padding: 22px 24px;
+
+  border-top: 1px solid #edf2f7;
+}
+
+.sidebar-campus-status {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #32a878;
+
+  box-shadow:
+    0 0 0 4px rgba(50, 168, 120, 0.1);
+}
+
+.sidebar-campus-status div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.sidebar-campus-status strong {
+  color: #536c87;
+
+  font-size: 9px;
+}
+
+.sidebar-campus-status span:not(.status-indicator) {
+  color: #a1afbe;
+
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .nexus-sidebar {
+    width: 230px;
+
+    transform: translateX(-100%);
+
+    transition:
+      transform 0.3s ease;
+  }
+
+}
+
+/* =========================================================
+   SIDEBAR TYPOGRAPHY — FINAL SCALE
+   ========================================================= */
+
+.sidebar-section-title {
+  font-size: 10px !important;
+  letter-spacing: 2.5px;
+}
+
+.sidebar-item {
+  min-height: 52px !important;
+
+  font-size: 14px !important;
+
+  gap: 16px;
+}
+
+.sidebar-item svg {
+  width: 19px;
+  height: 19px;
+}
+
+.sidebar-brand-text strong {
+  font-size: 19px !important;
+}
+
+.sidebar-brand-text span {
+  font-size: 8px !important;
+  letter-spacing: 2.2px;
+}
+
+.sidebar-campus-status strong {
+  font-size: 10px !important;
+}
+
+.sidebar-campus-status span:not(.status-indicator) {
+  font-size: 9px !important;
+}

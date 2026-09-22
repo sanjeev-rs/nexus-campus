@@ -1,0 +1,11 @@
+.dashboard-page {
+  min-height: 100vh;
+  padding: 60px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.management-dashboard {
+  background: #f4f8fc;
+  color: #102440;
+}
