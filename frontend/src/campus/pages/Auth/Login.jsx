@@ -1,15 +1,91 @@
 import { useState } from "react";
 import { FiEye, FiEyeOff, FiArrowRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const DEMO_USERS = [
+  {
+    email: "student@nexus.edu",
+    password: "student123",
+    role: "student",
+    name: "NEXUS Student",
+    redirect: "/student",
+  },
+  {
+    email: "faculty@nexus.edu",
+    password: "faculty123",
+    role: "faculty",
+    name: "NEXUS Faculty",
+    redirect: "/faculty",
+  },
+  {
+    email: "management@nexus.edu",
+    password: "management123",
+    role: "management",
+    name: "NEXUS Management",
+    redirect: "/management",
+  },
+];
+
 function Login() {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Authentication will be connected to the NEXUS backend later.
-    console.log("Login submitted");
+    setError("");
+    setIsLoading(true);
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    // Temporary frontend authentication.
+    // This will later be replaced by the FastAPI authentication API.
+    const user = DEMO_USERS.find(
+      (account) =>
+        account.email === normalizedEmail &&
+        account.password === password
+    );
+
+    setTimeout(() => {
+      if (!user) {
+        setError(
+          "Invalid campus credentials. Please check your email and password."
+        );
+        setIsLoading(false);
+        return;
+      }
+
+      // Store temporary authenticated session.
+      const session = {
+        isAuthenticated: true,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+        loginTime: new Date().toISOString(),
+      };
+
+      localStorage.setItem(
+        "nexusAuth",
+        JSON.stringify(session)
+      );
+
+      // Redirect according to role.
+      navigate(user.redirect, { replace: true });
+    }, 500);
+  };
+
+  const handleForgotPassword = () => {
+    setError(
+      "Password recovery will be connected to the NEXUS authentication system."
+    );
   };
 
   return (
@@ -31,10 +107,7 @@ function Login() {
 
         <div className="login-visual-content">
 
-          
-
           <div className="login-visual-bottom">
-
           </div>
 
         </div>
@@ -117,6 +190,11 @@ function Login() {
                   type="email"
                   placeholder="you@campus.edu"
                   autoComplete="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setError("");
+                  }}
                   required
                 />
 
@@ -136,9 +214,7 @@ function Login() {
                   <button
                     type="button"
                     className="forgot-password"
-                    onClick={() =>
-                      console.log("Forgot password")
-                    }
+                    onClick={handleForgotPassword}
                   >
                     Forgot password?
                   </button>
@@ -157,6 +233,11 @@ function Login() {
                     }
                     placeholder="Enter your password"
                     autoComplete="current-password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      setError("");
+                    }}
                     required
                   />
 
@@ -184,18 +265,34 @@ function Login() {
               </div>
 
 
+              {/* ERROR */}
+
+              {error && (
+                <div className="login-error">
+                  <span className="login-error-dot"></span>
+
+                  <span>{error}</span>
+                </div>
+              )}
+
+
               {/* BUTTON */}
 
               <button
                 type="submit"
                 className="login-button"
+                disabled={isLoading}
               >
 
                 <span>
-                  Enter Campus
+                  {isLoading
+                    ? "Authenticating..."
+                    : "Enter Campus"}
                 </span>
 
-                <FiArrowRight size={20} />
+                {!isLoading && (
+                  <FiArrowRight size={20} />
+                )}
 
               </button>
 

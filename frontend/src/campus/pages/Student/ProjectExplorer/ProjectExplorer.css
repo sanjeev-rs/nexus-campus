@@ -1,0 +1,554 @@
+.project-explorer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 48px 42px 80px;
+  box-sizing: border-box;
+  color: #102544;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.explorer-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 35px;
+
+  border: none;
+  background: transparent;
+
+  color: #7188a0;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.explorer-back:hover {
+  color: #1677e8;
+}
+
+.explorer-eyebrow {
+  display: block;
+
+  margin-bottom: 17px;
+
+  color: #1677e8;
+
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.explorer-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.explorer-header h1 {
+  max-width: 900px;
+
+  margin: 0;
+
+  font-size: clamp(52px, 5vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -3.5px;
+}
+
+.explorer-header h1 span {
+  color: #1677e8;
+}
+
+.explorer-header p {
+  max-width: 800px;
+
+  margin: 22px 0 0;
+
+  color: #7188a0;
+
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.explorer-header-icon {
+  width: 105px;
+  height: 105px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #cfe2f3;
+  border-radius: 28px;
+
+  background: white;
+
+  color: #1677e8;
+
+  box-shadow:
+    0 20px 45px rgba(38, 77, 116, .08);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.explorer-search-section {
+  margin-top: 48px;
+
+  padding: 25px;
+
+  border: 1px solid #dce8f2;
+  border-radius: 24px;
+
+  background: rgba(255,255,255,.78);
+
+  box-shadow:
+    0 20px 45px rgba(38,77,116,.05);
+}
+
+.explorer-search {
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 19px;
+
+  border: 1px solid #d4e2ef;
+  border-radius: 15px;
+
+  background: #f9fcff;
+
+  color: #7d94aa;
+}
+
+.explorer-search:focus-within {
+  border-color: #1677e8;
+  box-shadow:
+    0 0 0 4px rgba(22,119,232,.08);
+}
+
+.explorer-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #102544;
+
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.explorer-search input::placeholder {
+  color: #91a5b8;
+}
+
+.clear-search {
+  display: flex;
+
+  border: none;
+  background: transparent;
+
+  color: #91a5b8;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.explorer-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+.filter-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-right: 5px;
+
+  color: #607991;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.explorer-filters select {
+  min-height: 42px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d8e5f0;
+  border-radius: 10px;
+
+  background: white;
+
+  color: #526b84;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.project-result-count {
+  margin-left: auto;
+
+  color: #8297aa;
+
+  font-size: 13px;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.explorer-project-section {
+  margin-top: 55px;
+}
+
+.explorer-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.explorer-section-heading > div:first-child span {
+  color: #1677e8;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.7px;
+}
+
+.explorer-section-heading h2 {
+  margin: 8px 0 0;
+
+  font-size: 39px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.recommended-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #7657d9;
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   PROJECT GRID
+   ========================================================= */
+
+.explorer-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.explorer-project-card {
+  padding: 27px;
+
+  border: 1px solid #d9e6f1;
+  border-radius: 22px;
+
+  background: white;
+
+  box-shadow:
+    0 16px 38px rgba(38,77,116,.05);
+
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease;
+}
+
+.explorer-project-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #c8dff2;
+
+  box-shadow:
+    0 25px 55px rgba(38,77,116,.10);
+}
+
+.explorer-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.explorer-project-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #edf6ff;
+
+  color: #1677e8;
+}
+
+.match-score {
+  color: #1677e8;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.explorer-card-content {
+  margin-top: 25px;
+}
+
+.project-domain {
+  color: #8298ae;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.explorer-card-content h3 {
+  margin: 8px 0 10px;
+
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: -.7px;
+}
+
+.explorer-card-content p {
+  min-height: 80px;
+
+  margin: 0;
+
+  color: #7188a0;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.explorer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin-top: 18px;
+}
+
+.explorer-tags span {
+  padding: 7px 9px;
+
+  border-radius: 8px;
+
+  background: #f2f7fb;
+
+  color: #607991;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.explorer-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 25px;
+  padding-top: 18px;
+
+  border-top: 1px solid #edf2f6;
+}
+
+.project-author {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.author-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #eaf3ff;
+
+  color: #1677e8;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.project-author strong,
+.project-author span {
+  display: block;
+}
+
+.project-author strong {
+  color: #344e68;
+  font-size: 11px;
+}
+
+.project-author span {
+  margin-top: 2px;
+  color: #94a7b8;
+  font-size: 10px;
+}
+
+.explorer-open-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 9px 12px;
+
+  border: 1px solid #d5e4f0;
+  border-radius: 9px;
+
+  background: white;
+
+  color: #1677e8;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+.explorer-open-button:hover {
+  background: #edf6ff;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.no-projects {
+  padding: 80px 20px;
+
+  text-align: center;
+
+  border: 1px dashed #cbddea;
+  border-radius: 22px;
+
+  background: rgba(255,255,255,.6);
+
+  color: #8196aa;
+}
+
+.no-projects h3 {
+  margin: 15px 0 7px;
+
+  color: #304a65;
+
+  font-size: 24px;
+}
+
+.no-projects p {
+  margin: 0;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .explorer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+
+  .project-explorer {
+    padding: 35px 24px 60px;
+  }
+
+  .explorer-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .explorer-header-icon {
+    display: none;
+  }
+
+  .explorer-filters {
+    flex-wrap: wrap;
+  }
+
+  .project-result-count {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 620px) {
+
+  .explorer-header h1 {
+    font-size: 46px;
+  }
+
+  .explorer-header p {
+    font-size: 16px;
+  }
+
+  .explorer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .explorer-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

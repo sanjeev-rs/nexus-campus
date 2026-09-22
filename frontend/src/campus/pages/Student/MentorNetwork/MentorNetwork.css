@@ -1,0 +1,490 @@
+.mentor-network {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 48px 42px 80px;
+
+  box-sizing: border-box;
+
+  color: #102544;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.mentor-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 35px;
+
+  border: none;
+  background: transparent;
+
+  color: #7188a0;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.mentor-back:hover {
+  color: #23936d;
+}
+
+.mentor-header > span {
+  color: #23936d;
+
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.mentor-header h1 {
+  max-width: 1000px;
+
+  margin: 15px 0 0;
+
+  font-size: clamp(52px, 5vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -3.5px;
+}
+
+.mentor-header h1 strong {
+  color: #23936d;
+}
+
+.mentor-header p {
+  max-width: 820px;
+
+  margin: 23px 0 0;
+
+  color: #7188a0;
+
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.mentor-search-card {
+  margin-top: 48px;
+
+  padding: 25px;
+
+  border: 1px solid #dce8f2;
+  border-radius: 24px;
+
+  background: white;
+
+  box-shadow:
+    0 20px 45px rgba(38,77,116,.05);
+}
+
+.mentor-search {
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 0 19px;
+
+  border: 1px solid #d4e2ef;
+  border-radius: 15px;
+
+  background: #f9fcff;
+
+  color: #8297aa;
+}
+
+.mentor-search:focus-within {
+  border-color: #23936d;
+
+  box-shadow:
+    0 0 0 4px rgba(35,147,109,.08);
+}
+
+.mentor-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #102544;
+
+  font-family: inherit;
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.mentor-section {
+  margin-top: 55px;
+}
+
+.mentor-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.mentor-section-heading span:first-child {
+  color: #23936d;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.7px;
+}
+
+.mentor-section-heading h2 {
+  margin: 8px 0 0;
+
+  font-size: 39px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.mentor-ai-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #7657d9;
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   MENTOR GRID
+   ========================================================= */
+
+.mentor-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.mentor-card {
+  padding: 29px;
+
+  border: 1px solid #d9e6f1;
+  border-radius: 23px;
+
+  background: white;
+
+  box-shadow:
+    0 16px 38px rgba(38,77,116,.05);
+
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease;
+}
+
+.mentor-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 25px 55px rgba(38,77,116,.10);
+}
+
+.mentor-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mentor-avatar {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background: #eaf8f2;
+
+  color: #23936d;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.mentor-match {
+  color: #23936d;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.mentor-role {
+  display: block;
+
+  margin-top: 23px;
+
+  color: #8298ae;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.mentor-card h3 {
+  margin: 8px 0 4px;
+
+  font-size: 26px;
+  letter-spacing: -.7px;
+}
+
+.mentor-department {
+  margin: 0;
+
+  color: #7890a7;
+
+  font-size: 14px;
+}
+
+.mentor-expertise {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin-top: 20px;
+}
+
+.mentor-expertise span {
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  background: #f2f8f5;
+
+  color: #4c7b69;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.mentor-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 25px;
+  padding-top: 19px;
+
+  border-top: 1px solid #edf2f6;
+}
+
+.mentor-availability {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #7790a5;
+
+  font-size: 12px;
+}
+
+.mentor-availability span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #23936d;
+}
+
+.request-mentor-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #23936d;
+  border-radius: 10px;
+
+  background: #23936d;
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+.request-mentor-button:hover {
+  background: #1c805f;
+}
+
+
+/* =========================================================
+   HELP CARD
+   ========================================================= */
+
+.mentor-help-card {
+  display: grid;
+
+  grid-template-columns: 75px 1fr auto;
+
+  gap: 25px;
+
+  align-items: center;
+
+  margin-top: 55px;
+
+  padding: 32px;
+
+  border: 1px solid #cfe7dc;
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7fcfa,
+      #edf9f4
+    );
+}
+
+.mentor-help-icon {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background: white;
+
+  color: #23936d;
+
+  box-shadow:
+    0 12px 25px rgba(35,147,109,.10);
+}
+
+.mentor-help-card > div:nth-child(2) > span {
+  color: #23936d;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.mentor-help-card h2 {
+  margin: 7px 0;
+
+  font-size: 27px;
+  letter-spacing: -.7px;
+}
+
+.mentor-help-card p {
+  max-width: 700px;
+
+  margin: 0;
+
+  color: #718a80;
+
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.mentor-help-card > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 46px;
+
+  padding: 12px 17px;
+
+  border: 1px solid #23936d;
+  border-radius: 11px;
+
+  background: #23936d;
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .mentor-network {
+    padding: 35px 25px 60px;
+  }
+
+  .mentor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mentor-help-card {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .mentor-help-card > button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .mentor-header h1 {
+    font-size: 45px;
+  }
+
+  .mentor-header p {
+    font-size: 16px;
+  }
+
+  .mentor-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mentor-help-card {
+    grid-template-columns: 1fr;
+  }
+
+  .mentor-help-card > button {
+    grid-column: auto;
+  }
+}

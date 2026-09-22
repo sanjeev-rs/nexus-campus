@@ -20,12 +20,15 @@ function StudentDashboard() {
     <div className="student-dashboard">
 
       {/* =========================================================
-          WELCOME
+          WELCOME / STUDENT INTELLIGENCE
       ========================================================= */}
 
       <section className="student-welcome">
 
+        <div className="student-welcome-glow"></div>
+
         <div className="student-welcome-content">
+
           <span className="student-eyebrow">
             STUDENT INTELLIGENCE
           </span>
@@ -39,15 +42,21 @@ function StudentDashboard() {
             Your skills, projects, opportunities and campus intelligence —
             connected in one place.
           </p>
+
         </div>
 
         <div className="welcome-orbit">
+
           <div className="orbit-ring orbit-ring-one"></div>
+
           <div className="orbit-ring orbit-ring-two"></div>
+
+          <div className="orbit-ring orbit-ring-three"></div>
 
           <div className="orbit-core">
             <Sparkles size={22} />
           </div>
+
         </div>
 
       </section>
@@ -60,7 +69,9 @@ function StudentDashboard() {
       <section className="student-section">
 
         <div className="section-heading">
+
           <div>
+
             <span className="section-eyebrow">
               YOUR INTELLIGENCE
             </span>
@@ -68,27 +79,32 @@ function StudentDashboard() {
             <h2>
               At a glance
             </h2>
+
           </div>
 
           <span className="section-period">
             UPDATED JUST NOW
           </span>
+
         </div>
 
 
         <div className="student-kpis">
 
-          {/* KPI 1 */}
+          {/* KPI 01 */}
 
-          <article className="student-kpi">
+          <article className="student-kpi kpi-blue">
+
             <div className="kpi-top">
+
               <div className="kpi-icon">
-                <Brain size={19} />
+                <Brain size={20} />
               </div>
 
               <span className="kpi-trend positive">
                 +12%
               </span>
+
             </div>
 
             <span className="kpi-label">
@@ -106,20 +122,24 @@ function StudentDashboard() {
             <span className="kpi-description">
               Your overall campus intelligence profile
             </span>
+
           </article>
 
 
-          {/* KPI 2 */}
+          {/* KPI 02 */}
 
-          <article className="student-kpi">
+          <article className="student-kpi kpi-purple">
+
             <div className="kpi-top">
+
               <div className="kpi-icon">
-                <ChartNoAxesCombined size={19} />
+                <ChartNoAxesCombined size={20} />
               </div>
 
               <span className="kpi-trend positive">
                 +8%
               </span>
+
             </div>
 
             <span className="kpi-label">
@@ -137,20 +157,24 @@ function StudentDashboard() {
             <span className="kpi-description">
               Progress across your tracked capabilities
             </span>
+
           </article>
 
 
-          {/* KPI 3 */}
+          {/* KPI 03 */}
 
-          <article className="student-kpi">
+          <article className="student-kpi kpi-green">
+
             <div className="kpi-top">
+
               <div className="kpi-icon">
-                <FolderKanban size={19} />
+                <FolderKanban size={20} />
               </div>
 
               <span className="kpi-neutral">
                 ACTIVE
               </span>
+
             </div>
 
             <span className="kpi-label">
@@ -162,6 +186,7 @@ function StudentDashboard() {
             </strong>
 
             <div className="kpi-mini-stats">
+
               <span>
                 <CircleCheck size={14} />
                 2 completed
@@ -170,25 +195,30 @@ function StudentDashboard() {
               <span>
                 2 ongoing
               </span>
+
             </div>
 
             <span className="kpi-description">
               Projects contributing to your profile
             </span>
+
           </article>
 
 
-          {/* KPI 4 */}
+          {/* KPI 04 */}
 
-          <article className="student-kpi">
+          <article className="student-kpi kpi-orange">
+
             <div className="kpi-top">
+
               <div className="kpi-icon">
-                <Target size={19} />
+                <Target size={20} />
               </div>
 
               <span className="kpi-trend positive">
                 03
               </span>
+
             </div>
 
             <span className="kpi-label">
@@ -200,15 +230,18 @@ function StudentDashboard() {
             </strong>
 
             <div className="opportunity-indicator">
+
               <span></span>
               <span></span>
               <span></span>
               <span></span>
+
             </div>
 
             <span className="kpi-description">
               Opportunities matched to your profile
             </span>
+
           </article>
 
         </div>
@@ -229,9 +262,12 @@ function StudentDashboard() {
 
         <article className="dashboard-card skill-card">
 
+          <div className="card-top-glow"></div>
+
           <div className="dashboard-card-header">
 
             <div>
+
               <span className="card-eyebrow">
                 SKILL INTELLIGENCE
               </span>
@@ -239,11 +275,12 @@ function StudentDashboard() {
               <h3>
                 Your capabilities
               </h3>
+
             </div>
 
             <button className="card-action">
               View profile
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={17} />
             </button>
 
           </div>
@@ -326,10 +363,11 @@ function StudentDashboard() {
           <div className="skill-insight">
 
             <div className="insight-icon">
-              <TrendingUp size={17} />
+              <TrendingUp size={18} />
             </div>
 
             <div>
+
               <strong>
                 Growth opportunity
               </strong>
@@ -338,6 +376,7 @@ function StudentDashboard() {
                 Machine Learning is currently your highest-impact
                 development area.
               </p>
+
             </div>
 
           </div>
@@ -346,14 +385,17 @@ function StudentDashboard() {
 
 
         {/* =====================================================
-            ACTIVE PROJECTS
+            PROJECT DNA
         ===================================================== */}
 
         <article className="dashboard-card projects-card">
 
+          <div className="card-top-glow"></div>
+
           <div className="dashboard-card-header">
 
             <div>
+
               <span className="card-eyebrow">
                 PROJECT DNA
               </span>
@@ -361,11 +403,12 @@ function StudentDashboard() {
               <h3>
                 Active projects
               </h3>
+
             </div>
 
             <button className="card-action">
               View all
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={17} />
             </button>
 
           </div>
@@ -377,12 +420,13 @@ function StudentDashboard() {
             <div className="project-item">
 
               <div className="project-symbol blue">
-                <Brain size={18} />
+                <Brain size={19} />
               </div>
 
               <div className="project-content">
 
                 <div className="project-title-row">
+
                   <strong>
                     NEXUS
                   </strong>
@@ -390,6 +434,7 @@ function StudentDashboard() {
                   <span className="project-status">
                     ACTIVE
                   </span>
+
                 </div>
 
                 <p>
@@ -397,6 +442,7 @@ function StudentDashboard() {
                 </p>
 
                 <div className="project-meta">
+
                   <span>
                     AI / Data
                   </span>
@@ -404,11 +450,12 @@ function StudentDashboard() {
                   <span>
                     78% complete
                   </span>
+
                 </div>
 
               </div>
 
-              <ChevronRight size={17} />
+              <ChevronRight size={18} />
 
             </div>
 
@@ -416,12 +463,13 @@ function StudentDashboard() {
             <div className="project-item">
 
               <div className="project-symbol purple">
-                <ChartNoAxesCombined size={18} />
+                <ChartNoAxesCombined size={19} />
               </div>
 
               <div className="project-content">
 
                 <div className="project-title-row">
+
                   <strong>
                     Intelligence Engine
                   </strong>
@@ -429,6 +477,7 @@ function StudentDashboard() {
                   <span className="project-status">
                     ACTIVE
                   </span>
+
                 </div>
 
                 <p>
@@ -436,6 +485,7 @@ function StudentDashboard() {
                 </p>
 
                 <div className="project-meta">
+
                   <span>
                     Research
                   </span>
@@ -443,11 +493,12 @@ function StudentDashboard() {
                   <span>
                     54% complete
                   </span>
+
                 </div>
 
               </div>
 
-              <ChevronRight size={17} />
+              <ChevronRight size={18} />
 
             </div>
 
@@ -455,12 +506,13 @@ function StudentDashboard() {
             <div className="project-item">
 
               <div className="project-symbol green">
-                <Users size={18} />
+                <Users size={19} />
               </div>
 
               <div className="project-content">
 
                 <div className="project-title-row">
+
                   <strong>
                     Campus Connect
                   </strong>
@@ -468,6 +520,7 @@ function StudentDashboard() {
                   <span className="project-status">
                     ACTIVE
                   </span>
+
                 </div>
 
                 <p>
@@ -475,6 +528,7 @@ function StudentDashboard() {
                 </p>
 
                 <div className="project-meta">
+
                   <span>
                     Community
                   </span>
@@ -482,11 +536,12 @@ function StudentDashboard() {
                   <span>
                     31% complete
                   </span>
+
                 </div>
 
               </div>
 
-              <ChevronRight size={17} />
+              <ChevronRight size={18} />
 
             </div>
 
@@ -506,6 +561,7 @@ function StudentDashboard() {
         <div className="section-heading">
 
           <div>
+
             <span className="section-eyebrow">
               INTELLIGENCE MATCH
             </span>
@@ -513,11 +569,12 @@ function StudentDashboard() {
             <h2>
               Recommended for you
             </h2>
+
           </div>
 
           <button className="section-link">
             Explore opportunities
-            <ArrowUpRight size={16} />
+            <ArrowUpRight size={17} />
           </button>
 
         </div>
@@ -531,7 +588,7 @@ function StudentDashboard() {
             <div className="opportunity-top">
 
               <div className="opportunity-icon">
-                <GraduationCap size={20} />
+                <GraduationCap size={21} />
               </div>
 
               <span>
@@ -558,11 +615,13 @@ function StudentDashboard() {
             </div>
 
             <div className="opportunity-footer">
+
               <span>
                 AI Research
               </span>
 
-              <ArrowUpRight size={17} />
+              <ArrowUpRight size={18} />
+
             </div>
 
           </article>
@@ -573,7 +632,7 @@ function StudentDashboard() {
             <div className="opportunity-top">
 
               <div className="opportunity-icon">
-                <BriefcaseBusiness size={20} />
+                <BriefcaseBusiness size={21} />
               </div>
 
               <span>
@@ -600,11 +659,13 @@ function StudentDashboard() {
             </div>
 
             <div className="opportunity-footer">
+
               <span>
                 Campus Innovation
               </span>
 
-              <ArrowUpRight size={17} />
+              <ArrowUpRight size={18} />
+
             </div>
 
           </article>
@@ -615,7 +676,7 @@ function StudentDashboard() {
             <div className="opportunity-top">
 
               <div className="opportunity-icon">
-                <Users size={20} />
+                <Users size={21} />
               </div>
 
               <span>
@@ -642,11 +703,13 @@ function StudentDashboard() {
             </div>
 
             <div className="opportunity-footer">
+
               <span>
                 Student Network
               </span>
 
-              <ArrowUpRight size={17} />
+              <ArrowUpRight size={18} />
+
             </div>
 
           </article>
@@ -657,7 +720,7 @@ function StudentDashboard() {
 
 
       {/* =========================================================
-          CAMPUS ACTIVITY
+          CAMPUS PULSE
       ========================================================= */}
 
       <section className="student-section activity-section">
@@ -665,6 +728,7 @@ function StudentDashboard() {
         <div className="section-heading">
 
           <div>
+
             <span className="section-eyebrow">
               CAMPUS PULSE
             </span>
@@ -672,6 +736,7 @@ function StudentDashboard() {
             <h2>
               What's happening
             </h2>
+
           </div>
 
         </div>
@@ -684,6 +749,7 @@ function StudentDashboard() {
             <div className="activity-dot blue-dot"></div>
 
             <div className="activity-text">
+
               <strong>
                 24 students joined a new project
               </strong>
@@ -691,6 +757,7 @@ function StudentDashboard() {
               <span>
                 Campus Project Network
               </span>
+
             </div>
 
             <time>
@@ -705,6 +772,7 @@ function StudentDashboard() {
             <div className="activity-dot purple-dot"></div>
 
             <div className="activity-text">
+
               <strong>
                 New AI research opportunity available
               </strong>
@@ -712,6 +780,7 @@ function StudentDashboard() {
               <span>
                 Research & Innovation
               </span>
+
             </div>
 
             <time>
@@ -726,6 +795,7 @@ function StudentDashboard() {
             <div className="activity-dot green-dot"></div>
 
             <div className="activity-text">
+
               <strong>
                 Your project profile was updated
               </strong>
@@ -733,6 +803,7 @@ function StudentDashboard() {
               <span>
                 Project DNA
               </span>
+
             </div>
 
             <time>
@@ -747,6 +818,7 @@ function StudentDashboard() {
             <div className="activity-dot orange-dot"></div>
 
             <div className="activity-text">
+
               <strong>
                 8 new opportunities matched your skills
               </strong>
@@ -754,6 +826,7 @@ function StudentDashboard() {
               <span>
                 Intelligence Match
               </span>
+
             </div>
 
             <time>
@@ -765,7 +838,6 @@ function StudentDashboard() {
         </div>
 
       </section>
-
 
     </div>
   );

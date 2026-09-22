@@ -5,13 +5,16 @@ import {
   BookOpen,
   BriefcaseBusiness,
   FolderKanban,
-  GraduationCap,
   Home,
   Network,
   Users,
 } from "lucide-react";
 
-import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+
 
 function Sidebar() {
 
@@ -21,85 +24,149 @@ function Sidebar() {
   const currentPath = location.pathname;
 
 
+  /* =========================================================
+     MAIN NAVIGATION
+     ========================================================= */
+
   const mainNavigation = [
+
     {
       label: "Overview",
       icon: Home,
       path: "/student",
     },
+
     {
       label: "Intelligence",
       icon: Network,
       path: "/student/intelligence",
     },
+
     {
       label: "Projects",
       icon: FolderKanban,
       path: "/student/projects",
     },
+
     {
       label: "Knowledge",
       icon: BookOpen,
       path: "/student/knowledge",
     },
+
   ];
 
 
+  /* =========================================================
+     CAMPUS NAVIGATION
+     ========================================================= */
+
   const campusNavigation = [
+
     {
       label: "People",
       icon: Users,
       path: "/student/people",
     },
+
     {
       label: "Opportunities",
       icon: BriefcaseBusiness,
       path: "/student/opportunities",
     },
+
     {
       label: "Analytics",
       icon: BarChart3,
       path: "/student/analytics",
     },
+
   ];
 
 
-  const renderNavigation = (items) => (
-    <div className="sidebar-nav">
+  /* =========================================================
+     ACTIVE ROUTE
+     ========================================================= */
 
-      {items.map((item) => {
+  const isActive = (path) => {
 
-        const Icon = item.icon;
+    /*
+      Overview should only be active on /student.
+      This prevents Overview from remaining active
+      when visiting /student/intelligence.
+    */
 
-        const active =
-          currentPath === item.path;
+    if (path === "/student") {
+      return currentPath === "/student";
+    }
 
-        return (
-          <button
-            key={item.label}
-            className={`sidebar-item ${
-              active ? "active" : ""
-            }`}
-            onClick={() => navigate(item.path)}
-          >
+    /*
+      Other pages use an exact route match.
+    */
 
-            <Icon size={18} />
+    return currentPath === path;
+  };
 
-            <span>
-              {item.label}
-            </span>
 
-          </button>
-        );
+  /* =========================================================
+     NAVIGATION RENDERER
+     ========================================================= */
 
-      })}
+  const renderNavigation = (items) => {
 
-    </div>
-  );
+    return (
 
+      <div className="sidebar-nav">
+
+        {items.map((item) => {
+
+          const Icon = item.icon;
+
+          const active = isActive(item.path);
+
+
+          return (
+
+            <button
+              key={item.label}
+              type="button"
+              className={`sidebar-item ${
+                active ? "active" : ""
+              }`}
+              onClick={() => navigate(item.path)}
+              aria-current={active ? "page" : undefined}
+            >
+
+              <Icon
+                size={18}
+                strokeWidth={1.8}
+              />
+
+              <span>
+                {item.label}
+              </span>
+
+            </button>
+
+          );
+
+        })}
+
+      </div>
+
+    );
+
+  };
+
+
+  /* =========================================================
+     SIDEBAR
+     ========================================================= */
 
   return (
+
     <aside className="nexus-sidebar">
+
 
       {/* =====================================================
           BRAND
@@ -110,6 +177,7 @@ function Sidebar() {
         <div className="sidebar-logo">
           N
         </div>
+
 
         <div className="sidebar-brand-text">
 
@@ -132,6 +200,9 @@ function Sidebar() {
 
       <div className="sidebar-content">
 
+
+        {/* MAIN */}
+
         <div className="sidebar-section">
 
           <span className="sidebar-section-title">
@@ -142,6 +213,8 @@ function Sidebar() {
 
         </div>
 
+
+        {/* CAMPUS */}
 
         <div className="sidebar-section">
 
@@ -157,7 +230,7 @@ function Sidebar() {
 
 
       {/* =====================================================
-          BOTTOM
+          SYSTEM STATUS
       ===================================================== */}
 
       <div className="sidebar-bottom">
@@ -166,7 +239,9 @@ function Sidebar() {
 
           <span className="status-indicator"></span>
 
+
           <div>
+
             <strong>
               Campus Intelligence
             </strong>
@@ -174,6 +249,7 @@ function Sidebar() {
             <span>
               System operational
             </span>
+
           </div>
 
         </div>
@@ -181,7 +257,9 @@ function Sidebar() {
       </div>
 
     </aside>
+
   );
 }
+
 
 export default Sidebar;

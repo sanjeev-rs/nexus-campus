@@ -7073,3 +7073,168 @@ html {
   }
 
 }
+
+/* =========================================================
+   NEXUS GLOBAL TYPOGRAPHY SYSTEM
+   Fixed large readable scale
+   ========================================================= */
+
+:root {
+
+  --nexus-text-xs: 12px;
+  --nexus-text-sm: 14px;
+  --nexus-text-md: 16px;
+  --nexus-text-lg: 18px;
+  --nexus-text-xl: 22px;
+
+  --nexus-heading-sm: 28px;
+  --nexus-heading-md: 36px;
+  --nexus-heading-lg: 48px;
+  --nexus-heading-xl: 64px;
+
+}
+
+
+/* Base */
+
+body {
+  font-size: var(--nexus-text-md);
+}
+
+
+/* Main page headings */
+
+.student-dashboard h1,
+.student-intelligence h1,
+.student-projects h1,
+.project-explorer h1,
+.project-upload h1,
+.mentor-network h1 {
+  font-size: var(--nexus-heading-xl);
+}
+
+
+/* Section headings */
+
+.student-dashboard h2,
+.student-intelligence h2,
+.student-projects h2,
+.project-explorer h2,
+.project-upload h2,
+.mentor-network h2 {
+  font-size: var(--nexus-heading-md);
+}
+
+
+/* Card headings */
+
+.student-dashboard h3,
+.student-intelligence h3,
+.student-projects h3,
+.project-explorer h3,
+.project-upload h3,
+.mentor-network h3 {
+  font-size: var(--nexus-heading-sm);
+}
+
+
+/* Normal paragraphs */
+
+.student-dashboard p,
+.student-intelligence p,
+.student-projects p,
+.project-explorer p,
+.project-upload p,
+.mentor-network p {
+  font-size: var(--nexus-text-md);
+  line-height: 1.65;
+}
+
+
+/* Buttons */
+
+.student-dashboard button,
+.student-intelligence button,
+.student-projects button,
+.project-explorer button,
+.project-upload button,
+.mentor-network button {
+  font-size: var(--nexus-text-md);
+}
+
+
+/* Form controls */
+
+.student-dashboard input,
+.student-dashboard textarea,
+.student-dashboard select,
+
+.student-intelligence input,
+.student-intelligence textarea,
+.student-intelligence select,
+
+.student-projects input,
+.student-projects textarea,
+.student-projects select,
+
+.project-explorer input,
+.project-explorer textarea,
+.project-explorer select,
+
+.project-upload input,
+.project-upload textarea,
+.project-upload select,
+
+.mentor-network input,
+.mentor-network textarea,
+.mentor-network select {
+  font-size: var(--nexus-text-md);
+}
+
+
+/* Sidebar */
+
+.nexus-sidebar {
+  font-size: var(--nexus-text-md);
+}
+
+.sidebar-item {
+  font-size: var(--nexus-text-md);
+}
+
+
+/* Topbar */
+
+.campus-main {
+  font-size: var(--nexus-text-md);
+}
+
+
+/* =========================================================
+   RESPONSIVE TYPE SCALE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  :root {
+    --nexus-heading-xl: 54px;
+    --nexus-heading-lg: 42px;
+    --nexus-heading-md: 32px;
+    --nexus-heading-sm: 25px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  :root {
+    --nexus-text-md: 15px;
+
+    --nexus-heading-xl: 44px;
+    --nexus-heading-lg: 38px;
+    --nexus-heading-md: 29px;
+    --nexus-heading-sm: 23px;
+  }
+
+}

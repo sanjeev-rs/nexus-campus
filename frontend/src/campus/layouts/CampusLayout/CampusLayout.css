@@ -17,6 +17,8 @@
     );
 
   color: #102544;
+
+  overflow-x: hidden;
 }
 
 
@@ -26,9 +28,12 @@
 
 .campus-main {
   min-width: 0;
+
   flex: 1;
 
   margin-left: 272px;
+
+  position: relative;
 }
 
 
@@ -38,9 +43,14 @@
 
 .campus-content {
   width: 100%;
+
   min-height: calc(100vh - 92px);
 
   padding-top: 92px;
+
+  position: relative;
+
+  box-sizing: border-box;
 }
 
 
