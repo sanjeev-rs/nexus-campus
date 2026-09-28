@@ -1170,3 +1170,114 @@
   box-shadow:
     0 15px 30px rgba(17, 108, 218, 0.16);
 }
+
+/* =========================================================
+   LOGIN DIVIDER
+========================================================= */
+
+.login-divider {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin: 4px 0 2px;
+}
+
+.login-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(87, 128, 166, 0.16);
+}
+
+.login-divider p {
+  margin: 0;
+
+  color: #9aacbf;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+}
+
+
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
+
+.google-login-wrapper {
+  width: 100%;
+
+  min-height: 44px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
+.google-signin-button {
+  width: 100%;
+
+  min-height: 44px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.google-signin-button > div {
+  max-width: 100%;
+}
+
+.google-loading {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 5;
+
+  transform: translate(-50%, -50%);
+
+  padding: 7px 14px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  color: #52708f;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+
+  box-shadow:
+    0 8px 25px rgba(30, 79, 127, 0.10);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE GOOGLE BUTTON
+========================================================= */
+
+@media (max-width: 760px) {
+
+  .google-signin-button {
+    width: 100%;
+  }
+
+}

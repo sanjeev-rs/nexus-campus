@@ -19,7 +19,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -65,6 +65,11 @@ function ProjectUpload() {
 
   const [isSolo, setIsSolo] = useState("");
 
+  const [soloMember, setSoloMember] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
 
   const [teamCount, setTeamCount] = useState(0);
 
@@ -96,6 +101,11 @@ function ProjectUpload() {
 
   const [documentationUrl, setDocumentationUrl] =
     useState("");
+
+  const [documentationFiles, setDocumentationFiles] =
+    useState([]);
+
+  const documentationInputRef = useRef(null);
 
   const [publishedUrl, setPublishedUrl] =
     useState("");
@@ -156,7 +166,68 @@ function ProjectUpload() {
     if (value === "yes") {
       setTeamCount(0);
       setTeamMembers([]);
+    } else {
+      setSoloMember({
+        name: "",
+        email: "",
+        phone: "",
+      });
     }
+  };
+
+  const updateSoloMember = (field, value) => {
+    setSoloMember((currentMember) => ({
+      ...currentMember,
+      [field]: value,
+    }));
+  };
+
+  const handleDocumentationFiles = (event) => {
+    const selectedFiles = Array.from(event.target.files || []);
+
+    if (!selectedFiles.length) return;
+
+    setDocumentationFiles((currentFiles) => {
+      const existingKeys = new Set(
+        currentFiles.map(
+          (file) => `${file.name}-${file.size}-${file.lastModified}`
+        )
+      );
+
+      const newFiles = selectedFiles.filter(
+        (file) =>
+          !existingKeys.has(
+            `${file.name}-${file.size}-${file.lastModified}`
+          )
+      );
+
+      return [...currentFiles, ...newFiles];
+    });
+
+    event.target.value = "";
+  };
+
+  const removeDocumentationFile = (fileToRemove) => {
+    setDocumentationFiles((currentFiles) =>
+      currentFiles.filter(
+        (file) =>
+          !(
+            file.name === fileToRemove.name &&
+            file.size === fileToRemove.size &&
+            file.lastModified === fileToRemove.lastModified
+          )
+      )
+    );
+  };
+
+  const formatFileSize = (bytes) => {
+    if (bytes < 1024) return `${bytes} B`;
+
+    if (bytes < 1024 * 1024) {
+      return `${(bytes / 1024).toFixed(1)} KB`;
+    }
+
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   };
 
 
@@ -234,6 +305,11 @@ function ProjectUpload() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!documentationUrl.trim() && documentationFiles.length === 0) {
+      alert("Please add a documentation URL or upload at least one project document.");
+      return;
+    }
 
 
     /*
@@ -848,6 +924,106 @@ function ProjectUpload() {
             </label>
 
           </div>
+
+
+          {/* SOLO MEMBER DETAILS */}
+
+          {isSolo === "yes" && (
+
+            <div className="conditional-panel solo-panel">
+
+              <div className="conditional-header">
+
+                <div>
+
+                  <span>
+                    PROJECT OWNER
+                  </span>
+
+                  <h3>
+                    Tell us about the student who built it
+                  </h3>
+
+                </div>
+
+              </div>
+
+              <div className="upload-field-grid">
+
+                <div className="upload-field full-width">
+
+                  <label>
+                    Full name
+                    <span className="required">*</span>
+                  </label>
+
+                  <div className="input-with-icon">
+                    <UserRound size={18} />
+
+                    <input
+                      type="text"
+                      value={soloMember.name}
+                      onChange={(event) =>
+                        updateSoloMember("name", event.target.value)
+                      }
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+
+                </div>
+
+                <div className="upload-field">
+
+                  <label>
+                    Email
+                    <span className="required">*</span>
+                  </label>
+
+                  <div className="input-with-icon">
+                    <Mail size={18} />
+
+                    <input
+                      type="email"
+                      value={soloMember.email}
+                      onChange={(event) =>
+                        updateSoloMember("email", event.target.value)
+                      }
+                      placeholder="name@gmail.com"
+                      required
+                    />
+                  </div>
+
+                </div>
+
+                <div className="upload-field">
+
+                  <label>
+                    Mobile number
+                    <span className="required">*</span>
+                  </label>
+
+                  <div className="input-with-icon">
+                    <Phone size={18} />
+
+                    <input
+                      type="tel"
+                      value={soloMember.phone}
+                      onChange={(event) =>
+                        updateSoloMember("phone", event.target.value)
+                      }
+                      placeholder="+91 XXXXX XXXXX"
+                      required
+                    />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          )}
 
 
           {/* TEAM MEMBERS */}
@@ -1687,8 +1863,71 @@ function ProjectUpload() {
                 </label>
 
                 <p>
-                  Paste the link to your project documentation.
+                  Upload your project documents or provide a documentation link.
                 </p>
+
+                <div className="documentation-upload-area">
+
+                  <input
+                    ref={documentationInputRef}
+                    id="project-documentation-files"
+                    className="resource-file-input"
+                    type="file"
+                    multiple
+                    accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.png,.jpg,.jpeg"
+                    onChange={handleDocumentationFiles}
+                  />
+
+                  <label
+                    htmlFor="project-documentation-files"
+                    className="documentation-upload-button"
+                  >
+                    <Upload size={19} />
+                    <span>Upload Documents</span>
+                  </label>
+
+                  <span className="documentation-upload-hint">
+                    PDF, DOC, DOCX, PPT, PPTX, XLS, XLSX, ZIP, images and text files
+                  </span>
+
+                </div>
+
+                {documentationFiles.length > 0 && (
+                  <div className="uploaded-document-list">
+
+                    {documentationFiles.map((file) => (
+                      <div
+                        className="uploaded-document"
+                        key={`${file.name}-${file.size}-${file.lastModified}`}
+                      >
+                        <div className="uploaded-document-icon">
+                          <FileText size={18} />
+                        </div>
+
+                        <div className="uploaded-document-info">
+                          <strong>{file.name}</strong>
+                          <span>{formatFileSize(file.size)}</span>
+                        </div>
+
+                        <button
+                          type="button"
+                          className="remove-document-button"
+                          onClick={() => removeDocumentationFile(file)}
+                          aria-label={`Remove ${file.name}`}
+                        >
+                          <X size={17} />
+                        </button>
+                      </div>
+                    ))}
+
+                  </div>
+                )}
+
+                <div className="documentation-url-divider">
+                  <span></span>
+                  <b>OR</b>
+                  <span></span>
+                </div>
 
                 <input
                   type="url"
@@ -1698,9 +1937,12 @@ function ProjectUpload() {
                       event.target.value
                     )
                   }
-                  placeholder="Google Drive / Docs / Notion / PDF URL"
-                  required
+                  placeholder="Paste Google Drive / Docs / Notion / PDF URL"
                 />
+
+                <small className="resource-required-note">
+                  Add at least one uploaded document or a documentation URL.
+                </small>
 
               </div>
 
