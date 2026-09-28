@@ -12,6 +12,7 @@ import "./KnowledgeSubPage.css";
 const researchItems = [
   {
     title: "Computer Vision Research Lab",
+    slug: "computer-vision-research-lab",
     description:
       "Applied computer vision research conducted by students and faculty.",
     area: "Computer Vision",
@@ -20,6 +21,7 @@ const researchItems = [
   },
   {
     title: "Predictive Student Analytics",
+    slug: "predictive-student-analytics",
     description:
       "Research focused on predicting student engagement and academic patterns.",
     area: "Machine Learning",
@@ -28,6 +30,7 @@ const researchItems = [
   },
   {
     title: "Campus Digital Twin",
+    slug: "campus-digital-twin",
     description:
       "Research exploring digital representations of campus systems and activity.",
     area: "Digital Twin",
@@ -36,6 +39,7 @@ const researchItems = [
   },
   {
     title: "Natural Language Processing Lab",
+    slug: "natural-language-processing-lab",
     description:
       "Research involving language models, text intelligence and conversational systems.",
     area: "NLP",
@@ -148,17 +152,12 @@ function KnowledgeResearch() {
                 className="knowledge-item-action"
                 type="button"
                 onClick={() =>
-                    navigate(
-                    `/student/knowledge/research/${item.title
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, "-")
-                        .replace(/^-|-$/g, "")}`
-                    )
+                  navigate(`/student/knowledge/item/${item.slug}`)
                 }
-                >
+              >
                 Explore research
                 <FiArrowRight size={16} />
-                </button>
+              </button>
 
             </article>
           ))}

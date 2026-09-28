@@ -4,6 +4,7 @@ import {
   FiBookOpen,
   FiBriefcase,
   FiCheckCircle,
+  FiChevronRight,
   FiClock,
   FiCode,
   FiDatabase,
@@ -403,6 +404,534 @@ const knowledgeItems = {
       "Institutional relationship mapping",
       "Simulation opportunities",
       "Foundation for campus intelligence",
+    ],
+  },
+
+
+  /* -------------------------------------------------------
+     RESEARCH
+     ------------------------------------------------------- */
+
+  "natural-language-processing-lab": {
+    type: "RESEARCH",
+    title: "Natural Language Processing Lab",
+    subtitle:
+      "Applied NLP research investigating large language models and institutional text intelligence.",
+    category: "Artificial Intelligence",
+    accent: "indigo",
+    icon: FiDatabase,
+    status: "Active",
+    updated: "Updated 3 days ago",
+    owner: "NEXUS Language Intelligence Lab",
+    description:
+      "Research focused on natural language processing, semantic retrieval, and conversational campus models.",
+    overview:
+      "The Natural Language Processing Lab explores practical methods for indexing, querying, and reasoning across campus information using transformer models, embeddings, and context-aware agents.",
+    objectives: [
+      "Develop campus-specific language understanding models.",
+      "Index institutional documentation for semantic search.",
+      "Evaluate instruction tuning for campus academic queries.",
+      "Provide accessible language APIs for student research.",
+    ],
+    technologies: [
+      "Python",
+      "PyTorch",
+      "Hugging Face",
+      "FastAPI",
+      "Vector Search",
+    ],
+    outcomes: [
+      "Semantic campus search models",
+      "Open-source fine-tuned checkpoints",
+      "Student thesis research papers",
+      "Institutional text analysis toolkit",
+    ],
+  },
+
+
+  /* -------------------------------------------------------
+     GUIDES
+     ------------------------------------------------------- */
+
+  "getting-started-with-github": {
+    type: "GUIDE",
+    title: "Getting Started with GitHub",
+    subtitle:
+      "A practical guide for campus students managing projects, version control and collaborative workflows.",
+    category: "Development",
+    accent: "green",
+    icon: FiBookOpen,
+    status: "Published",
+    updated: "Updated 1 week ago",
+    owner: "Open Source Campus Community",
+    description:
+      "A structured walkthrough on Git version control, branching strategies, and collaboration practices.",
+    overview:
+      "This guide covers the fundamental version control concepts every student needs, from cloning repositories and creating feature branches to opening pull requests and collaborating on group coursework.",
+    objectives: [
+      "Master core Git CLI commands and concepts.",
+      "Understand trunk-based and feature-branch workflows.",
+      "Learn to create clear pull requests and perform code reviews.",
+      "Manage campus open-source project repositories effectively.",
+    ],
+    technologies: [
+      "Git",
+      "GitHub",
+      "Markdown",
+      "CI/CD Actions",
+    ],
+    outcomes: [
+      "Standardized student collaboration workflow",
+      "Reduced merge conflict disruptions",
+      "Professional git history practices",
+      "Faster onboarding for team projects",
+    ],
+  },
+
+  "building-your-first-ai-project": {
+    type: "GUIDE",
+    title: "Building Your First AI Project",
+    subtitle:
+      "A step-by-step campus roadmap from problem framing to model evaluation and interactive demonstration.",
+    category: "Artificial Intelligence",
+    accent: "green",
+    icon: FiBookOpen,
+    status: "Published",
+    updated: "Updated 5 days ago",
+    owner: "AI & Data Science Student Team",
+    description:
+      "A foundational guide designed to help students conceptualize, train, and present their initial AI projects.",
+    overview:
+      "Designed for beginners, this resource covers dataset selection, preprocessing pipelines, model selection, baseline benchmarking, and simple web deployment for demonstration day.",
+    objectives: [
+      "Formulate viable machine learning problem statements.",
+      "Source and preprocess clean academic datasets.",
+      "Train baseline models and evaluate performance metrics.",
+      "Deploy interactive models for campus demonstrations.",
+    ],
+    technologies: [
+      "Python",
+      "Scikit-learn",
+      "Streamlit",
+      "Pandas",
+      "Matplotlib",
+    ],
+    outcomes: [
+      "Step-by-step project blueprint",
+      "Reproducible starter template",
+      "Dataset evaluation checklist",
+      "Live interactive demonstration guide",
+    ],
+  },
+
+
+  /* -------------------------------------------------------
+     TECHNOLOGIES
+     ------------------------------------------------------- */
+
+  "python": {
+    type: "TECHNOLOGY",
+    title: "Python",
+    subtitle:
+      "The core programming language powering AI, data science, research automation, and backend systems at NEXUS.",
+    category: "Programming",
+    accent: "orange",
+    icon: FiCode,
+    status: "Documented",
+    updated: "Updated this semester",
+    owner: "Campus Technical Council",
+    description:
+      "Python is the primary language utilized across student computing labs, data science curricula, and intelligent campus tooling.",
+    overview:
+      "With extensive library ecosystems in scientific computing, machine learning, and web development, Python serves as the foundational language for undergraduate and research projects across campus.",
+    objectives: [
+      "Standardize modern Python 3.12+ environments across departments.",
+      "Promote virtual environments and dependency management.",
+      "Encourage clean coding standards and typing conventions.",
+      "Support high-performance data processing and AI pipelines.",
+    ],
+    technologies: [
+      "Python 3",
+      "Poetry",
+      "NumPy",
+      "Pandas",
+      "FastAPI",
+    ],
+    outcomes: [
+      "Over 420 active campus project repositories",
+      "Shared university package templates",
+      "Automated lab testing environments",
+      "Rich community support and peer mentoring",
+    ],
+  },
+
+  "react": {
+    type: "TECHNOLOGY",
+    title: "React",
+    subtitle:
+      "Modern component-driven web framework utilized for student dashboards, campus portals, and interactive tools.",
+    category: "Frontend",
+    accent: "orange",
+    icon: FiCode,
+    status: "Documented",
+    updated: "Updated this semester",
+    owner: "Campus Technical Council",
+    description:
+      "React provides the declarative component architecture underlying the NEXUS platform and numerous campus software systems.",
+    overview:
+      "Students and researchers leverage React along with Vite to develop high-performance user interfaces, administrative tools, and real-time visualization dashboards with clean state management.",
+    objectives: [
+      "Foster modern component architecture and reusable design systems.",
+      "Implement responsive, accessible interface standards.",
+      "Integrate with REST and WebSocket institutional backend services.",
+      "Accelerate student web application development.",
+    ],
+    technologies: [
+      "React 19",
+      "Vite",
+      "JavaScript / JSX",
+      "CSS Modules",
+      "React Router",
+    ],
+    outcomes: [
+      "Over 210 campus web applications built",
+      "NEXUS unified design component library",
+      "Accessible mobile-responsive interface patterns",
+      "Reusable authentication and layout wrappers",
+    ],
+  },
+
+  "fastapi": {
+    type: "TECHNOLOGY",
+    title: "FastAPI",
+    subtitle:
+      "High-performance Python web framework for building institutional APIs and machine learning services.",
+    category: "Backend",
+    accent: "orange",
+    icon: FiCode,
+    status: "Documented",
+    updated: "Updated this semester",
+    owner: "Campus Technical Council",
+    description:
+      "FastAPI is the standard backend framework for serving machine learning models, async database workflows, and campus intelligence endpoints.",
+    overview:
+      "Leveraging Python type hints and OpenAPI standards, FastAPI allows students to quickly generate self-documenting, asynchronous backend microservices with automatic validation.",
+    objectives: [
+      "Standardize asynchronous backend API development.",
+      "Enable seamless model serving for machine learning projects.",
+      "Enforce strict Pydantic validation across request contracts.",
+      "Ensure robust JWT authentication and role authorization.",
+    ],
+    technologies: [
+      "FastAPI",
+      "Pydantic",
+      "Uvicorn",
+      "SQLAlchemy",
+      "AsyncIO",
+    ],
+    outcomes: [
+      "Over 140 campus services and model endpoints",
+      "Automated interactive Swagger documentation",
+      "Standardized JWT authentication modules",
+      "Sub-10ms response times for core campus APIs",
+    ],
+  },
+
+  "postgresql": {
+    type: "TECHNOLOGY",
+    title: "PostgreSQL",
+    subtitle:
+      "Enterprise relational database management system storing institutional records, project schemas, and analytics data.",
+    category: "Database",
+    accent: "orange",
+    icon: FiCode,
+    status: "Documented",
+    updated: "Updated this semester",
+    owner: "Campus Technical Council",
+    description:
+      "PostgreSQL serves as the primary transactional and analytical datastore for NEXUS and campus research projects.",
+    overview:
+      "Renowned for reliability and robust ACID compliance, PostgreSQL powers relational data models, vector extensions, and institutional analytics queries across departments.",
+    objectives: [
+      "Maintain reliable, structured campus relational schemas.",
+      "Support pgvector extensions for semantic AI search.",
+      "Teach advanced SQL, indexing, and query optimization.",
+      "Ensure data integrity and backup resilience across databases.",
+    ],
+    technologies: [
+      "PostgreSQL 16",
+      "pgvector",
+      "SQLAlchemy",
+      "Alembic",
+      "SQL",
+    ],
+    outcomes: [
+      "Over 180 campus database instances",
+      "Relational schemas for projects, users, and mentors",
+      "Vector index support for institutional embeddings",
+      "Automated migration and backup protocols",
+    ],
+  },
+
+  "machine-learning": {
+    type: "TECHNOLOGY",
+    title: "Machine Learning",
+    subtitle:
+      "Applied statistical modeling, predictive analytics, and pattern recognition across engineering domains.",
+    category: "Artificial Intelligence",
+    accent: "orange",
+    icon: FiCode,
+    status: "Documented",
+    updated: "Updated this semester",
+    owner: "AI & Data Science Department",
+    description:
+      "Machine learning workflows allow campus researchers to derive actionable insights from complex academic and operational datasets.",
+    overview:
+      "From supervised classification and regression to unsupervised clustering and anomaly detection, machine learning models drive key intelligence features within the campus ecosystem.",
+    objectives: [
+      "Equip students with end-to-end model training expertise.",
+      "Ensure reproducible experimentation and metric tracking.",
+      "Address bias, interpretability, and ethical ML deployment.",
+      "Bridge academic theory with practical campus challenges.",
+    ],
+    technologies: [
+      "Scikit-learn",
+      "XGBoost",
+      "PyTorch",
+      "Pandas",
+      "MLflow",
+    ],
+    outcomes: [
+      "Over 320 student projects with ML capabilities",
+      "Campus predictive engagement models",
+      "Cross-departmental collaborative datasets",
+      "Published student research symposium papers",
+    ],
+  },
+
+  "computer-vision": {
+    type: "TECHNOLOGY",
+    title: "Computer Vision",
+    subtitle:
+      "Image intelligence, spatial sensing, and visual pattern recognition for robotics and intelligent monitoring.",
+    category: "Artificial Intelligence",
+    accent: "orange",
+    icon: FiCode,
+    status: "Documented",
+    updated: "Updated this semester",
+    owner: "Computer Vision Research Group",
+    description:
+      "Computer vision technologies empower students to extract high-level representations from digital imagery and video streams.",
+    overview:
+      "Utilized across drone navigation, lab safety monitoring, and automated document analysis, computer vision is one of the most active research areas on campus.",
+    objectives: [
+      "Provide lab access to GPU compute clusters for model training.",
+      "Support edge inference on embedded devices like Jetson and Raspberry Pi.",
+      "Train visual transformers and convolutional backbones.",
+      "Build ethical visual sensing systems.",
+    ],
+    technologies: [
+      "OpenCV",
+      "PyTorch",
+      "YOLOv8",
+      "TorchVision",
+      "CUDA",
+    ],
+    outcomes: [
+      "Over 150 vision-based student applications",
+      "Campus autonomous navigation research",
+      "Automated lab instrument monitoring",
+      "Undergraduate computer vision symposium exhibits",
+    ],
+  },
+
+
+  /* -------------------------------------------------------
+     FACULTY EXPERTISE
+     ------------------------------------------------------- */
+
+  "faculty-ai-machine-learning": {
+    type: "FACULTY EXPERTISE",
+    title: "Faculty Expertise: AI & Machine Learning",
+    subtitle:
+      "Faculty advisory network specializing in deep learning, probabilistic modeling, and intelligent software.",
+    category: "Artificial Intelligence",
+    accent: "purple",
+    icon: FiUsers,
+    status: "Active",
+    updated: "Updated this semester",
+    owner: "Department of AI & Data Science",
+    description:
+      "Distinguished campus faculty members available to mentor students on advanced AI and machine learning initiatives.",
+    overview:
+      "This expertise cluster connects students working on capstone projects and research papers with professors whose research domains include deep learning architectures, reinforcement learning, and AI ethics.",
+    objectives: [
+      "Provide academic mentorship for AI student projects.",
+      "Supervise student research publications in peer-reviewed venues.",
+      "Facilitate industry-sponsored capstone opportunities.",
+      "Host departmental seminars on state-of-the-art AI advancements.",
+    ],
+    technologies: [
+      "Deep Learning",
+      "Reinforcement Learning",
+      "NLP",
+      "PyTorch",
+      "Research Methodologies",
+    ],
+    outcomes: [
+      "Over 40 mentored student project teams",
+      "15+ co-authored journal publications",
+      "Annual AI student research symposium",
+      "Curriculum alignment with industry advancements",
+    ],
+  },
+
+  "faculty-computer-vision": {
+    type: "FACULTY EXPERTISE",
+    title: "Faculty Expertise: Computer Vision",
+    subtitle:
+      "Faculty research group focused on visual intelligence, robotics, and image processing.",
+    category: "Computer Vision",
+    accent: "purple",
+    icon: FiUsers,
+    status: "Active",
+    updated: "Updated this semester",
+    owner: "Department of Computer Science & Engineering",
+    description:
+      "Faculty specialists guiding research in robotic vision, 3D reconstruction, and multimodal visual intelligence.",
+    overview:
+      "Faculty in this group lead funded research labs where students work directly alongside professors on vision-based robotics, automated medical imaging, and aerial surveillance systems.",
+    objectives: [
+      "Advise student teams on complex computer vision architectures.",
+      "Maintain laboratory equipment including stereo cameras and drone rigs.",
+      "Guide experimental methodology and ablation analysis.",
+      "Connect students with robotics research grants.",
+    ],
+    technologies: [
+      "Robotics",
+      "3D Vision",
+      "Image Processing",
+      "Embedded AI",
+      "Sensor Fusion",
+    ],
+    outcomes: [
+      "28 supervised capstone projects",
+      "Autonomous campus drone research initiative",
+      "Open-source image segmentation benchmarks",
+      "Funded student research internships",
+    ],
+  },
+
+  "faculty-data-science": {
+    type: "FACULTY EXPERTISE",
+    title: "Faculty Expertise: Data Science",
+    subtitle:
+      "Faculty guidance across big data analytics, statistical learning, and institutional intelligence.",
+    category: "Data Science",
+    accent: "purple",
+    icon: FiUsers,
+    status: "Active",
+    updated: "Updated this semester",
+    owner: "Department of AI & Data Science",
+    description:
+      "Faculty advisory body supporting data-intensive student inquiries, statistical modeling, and experimental design.",
+    overview:
+      "Faculty experts provide guidance on exploratory data analysis, causal inference, time-series forecasting, and big data engineering across campus disciplines.",
+    objectives: [
+      "Support student data analytics and predictive modeling.",
+      "Review experimental setups and statistical validity.",
+      "Guide data visualization and institutional storytelling.",
+      "Facilitate campus-wide data-driven decision tools.",
+    ],
+    technologies: [
+      "Statistical Modeling",
+      "R",
+      "Python",
+      "SQL",
+      "Time Series Analysis",
+    ],
+    outcomes: [
+      "37 guided student analytics projects",
+      "Predictive student engagement research",
+      "Interdepartmental data science clinics",
+      "Workshops on statistical rigor in engineering",
+    ],
+  },
+
+  "faculty-iot-embedded-systems": {
+    type: "FACULTY EXPERTISE",
+    title: "Faculty Expertise: IoT & Embedded Systems",
+    subtitle:
+      "Faculty mentorship in microcontroller programming, sensor networks, and edge intelligence.",
+    category: "IoT & Hardware",
+    accent: "purple",
+    icon: FiUsers,
+    status: "Active",
+    updated: "Updated this semester",
+    owner: "Department of Electronics & Communication",
+    description:
+      "Faculty advisors dedicated to helping students bridge software and hardware in embedded IoT systems.",
+    overview:
+      "Advisors provide laboratory support, PCB fabrication guidance, and firmware optimization strategies for students building connected physical devices.",
+    objectives: [
+      "Mentor smart campus hardware and sensing initiatives.",
+      "Provide hands-on laboratory testing protocols.",
+      "Guide low-power edge compute and communication protocols.",
+      "Support patent filings and hardware incubation.",
+    ],
+    technologies: [
+      "Embedded C++",
+      "ESP32",
+      "LoRaWAN",
+      "MQTT",
+      "Edge AI",
+    ],
+    outcomes: [
+      "31 active smart campus hardware deployments",
+      "Energy monitoring IoT testbed",
+      "Student prototyping lab access",
+      "Collaborative hardware patent applications",
+    ],
+  },
+
+
+  /* -------------------------------------------------------
+     STUDENT WORK
+     ------------------------------------------------------- */
+
+  "student-skill-intelligence": {
+    type: "STUDENT WORK",
+    title: "Student Skill Intelligence",
+    subtitle:
+      "A student-designed intelligence engine mapping campus learning outcomes to industry skill demands.",
+    category: "Artificial Intelligence",
+    accent: "cyan",
+    icon: FiZap,
+    status: "Active",
+    updated: "Updated 3 days ago",
+    owner: "Student Innovation Lab",
+    description:
+      "An intelligent graph-based mapping system connecting student projects, coursework, and detected capabilities.",
+    overview:
+      "Developed by undergraduate students, this system analyzes student code repositories and coursework submissions to build personalized capability profiles that dynamically surface relevant mentors and opportunities.",
+    objectives: [
+      "Quantify skill development through practical project output.",
+      "Generate personalized learning and growth recommendations.",
+      "Match students with compatible peer collaborators.",
+      "Provide transparent skill verification for campus recruiters.",
+    ],
+    technologies: [
+      "Python",
+      "FastAPI",
+      "Neo4j",
+      "React",
+      "Scikit-learn",
+    ],
+    outcomes: [
+      "Live student skill graph mapping",
+      "Automated collaborator matching algorithm",
+      "Curriculum alignment feedback for departments",
+      "Integrated portfolio generation",
     ],
   },
 };

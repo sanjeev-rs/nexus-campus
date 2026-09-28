@@ -12,6 +12,7 @@ import "./KnowledgeSubPage.css";
 const studentWork = [
   {
     title: "AI Campus Assistant",
+    slug: "ai-campus-assistant",
     description:
       "A student-built intelligent assistant designed to help students navigate campus information.",
     category: "Generative AI",
@@ -19,6 +20,7 @@ const studentWork = [
   },
   {
     title: "Smart Campus Analytics",
+    slug: "smart-campus-analytics",
     description:
       "A predictive analytics system for understanding campus activity and student engagement.",
     category: "Data Science",
@@ -26,6 +28,7 @@ const studentWork = [
   },
   {
     title: "Campus Digital Twin",
+    slug: "campus-digital-twin",
     description:
       "A digital representation of campus systems designed for simulation and intelligence.",
     category: "Digital Twin",
@@ -33,6 +36,7 @@ const studentWork = [
   },
   {
     title: "Student Skill Intelligence",
+    slug: "student-skill-intelligence",
     description:
       "A system for mapping student skills to projects, opportunities and future roles.",
     category: "Artificial Intelligence",
@@ -143,17 +147,12 @@ function KnowledgeStudentWork() {
                 className="knowledge-item-action"
                 type="button"
                 onClick={() =>
-                    navigate(
-                    `/student/knowledge/student-work/${item.title
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, "-")
-                        .replace(/^-|-$/g, "")}`
-                    )
+                  navigate(`/student/knowledge/item/${item.slug}`)
                 }
-                >
+              >
                 Explore project
                 <FiArrowRight size={16} />
-                </button>
+              </button>
 
             </article>
           ))}

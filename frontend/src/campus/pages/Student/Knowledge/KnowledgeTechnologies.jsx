@@ -12,6 +12,7 @@ import "./KnowledgeSubPage.css";
 const technologies = [
   {
     title: "Python",
+    slug: "python",
     description:
       "Widely used across AI, data science, automation and backend projects.",
     projects: "428 projects",
@@ -19,6 +20,7 @@ const technologies = [
   },
   {
     title: "React",
+    slug: "react",
     description:
       "Used to build interactive campus applications and student projects.",
     projects: "216 projects",
@@ -26,6 +28,7 @@ const technologies = [
   },
   {
     title: "FastAPI",
+    slug: "fastapi",
     description:
       "A popular backend framework used for AI and data-driven applications.",
     projects: "142 projects",
@@ -33,6 +36,7 @@ const technologies = [
   },
   {
     title: "PostgreSQL",
+    slug: "postgresql",
     description:
       "A major database technology used by campus applications and research.",
     projects: "187 projects",
@@ -40,6 +44,7 @@ const technologies = [
   },
   {
     title: "Machine Learning",
+    slug: "machine-learning",
     description:
       "Applied across prediction, classification and intelligence projects.",
     projects: "326 projects",
@@ -47,6 +52,7 @@ const technologies = [
   },
   {
     title: "Computer Vision",
+    slug: "computer-vision",
     description:
       "Used for image understanding, recognition and intelligent systems.",
     projects: "154 projects",
@@ -157,17 +163,12 @@ function KnowledgeTechnologies() {
                 className="knowledge-item-action"
                 type="button"
                 onClick={() =>
-                    navigate(
-                    `/student/knowledge/technologies/${technology.title
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, "-")
-                        .replace(/^-|-$/g, "")}`
-                    )
+                  navigate(`/student/knowledge/item/${technology.slug}`)
                 }
-                >
+              >
                 Explore usage
                 <FiArrowRight size={16} />
-                </button>
+              </button>
 
             </article>
           ))}

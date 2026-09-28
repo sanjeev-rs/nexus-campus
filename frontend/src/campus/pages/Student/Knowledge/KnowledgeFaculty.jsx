@@ -12,6 +12,7 @@ import "./KnowledgeSubPage.css";
 const faculty = [
   {
     name: "AI & Machine Learning",
+    slug: "faculty-ai-machine-learning",
     description:
       "Faculty expertise connected to artificial intelligence and machine learning.",
     expertise: "AI • ML • NLP",
@@ -19,6 +20,7 @@ const faculty = [
   },
   {
     name: "Computer Vision",
+    slug: "faculty-computer-vision",
     description:
       "Faculty working across computer vision, image intelligence and visual computing.",
     expertise: "CV • Image AI • Robotics",
@@ -26,6 +28,7 @@ const faculty = [
   },
   {
     name: "Data Science",
+    slug: "faculty-data-science",
     description:
       "Expertise covering analytics, statistical modelling and intelligent systems.",
     expertise: "Analytics • Statistics • ML",
@@ -33,6 +36,7 @@ const faculty = [
   },
   {
     name: "IoT & Embedded Systems",
+    slug: "faculty-iot-embedded-systems",
     description:
       "Faculty expertise in connected systems, sensors and intelligent devices.",
     expertise: "IoT • Embedded • Sensors",
@@ -143,17 +147,12 @@ function KnowledgeFaculty() {
                 className="knowledge-item-action"
                 type="button"
                 onClick={() =>
-                    navigate(
-                    `/student/knowledge/faculty/${item.name
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, "-")
-                        .replace(/^-|-$/g, "")}`
-                    )
+                  navigate(`/student/knowledge/item/${item.slug}`)
                 }
-                >
+              >
                 Find faculty
                 <FiArrowRight size={16} />
-                </button>
+              </button>
 
             </article>
           ))}

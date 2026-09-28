@@ -12,6 +12,7 @@ import "./KnowledgeSubPage.css";
 const guides = [
   {
     title: "Building with Supabase",
+    slug: "building-with-supabase",
     description:
       "A practical guide for building campus applications with Supabase.",
     category: "Backend",
@@ -19,6 +20,7 @@ const guides = [
   },
   {
     title: "Machine Learning Deployment",
+    slug: "machine-learning-deployment",
     description:
       "Lessons and practices for deploying machine learning applications.",
     category: "MLOps",
@@ -26,6 +28,7 @@ const guides = [
   },
   {
     title: "Getting Started with GitHub",
+    slug: "getting-started-with-github",
     description:
       "A campus guide for managing projects, repositories and collaboration.",
     category: "Development",
@@ -33,6 +36,7 @@ const guides = [
   },
   {
     title: "Building Your First AI Project",
+    slug: "building-your-first-ai-project",
     description:
       "A practical starting point for students beginning their AI journey.",
     category: "Artificial Intelligence",
@@ -143,17 +147,12 @@ function KnowledgeGuides() {
                 className="knowledge-item-action"
                 type="button"
                 onClick={() =>
-                    navigate(
-                    `/student/knowledge/guides/${guide.title
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, "-")
-                        .replace(/^-|-$/g, "")}`
-                    )
+                  navigate(`/student/knowledge/item/${guide.slug}`)
                 }
-                >
+              >
                 Read guide
                 <FiArrowRight size={16} />
-                </button>                       
+              </button>
 
             </article>
           ))}
