@@ -1,3 +1,5 @@
+import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FiArrowLeft,
   FiArrowRight,
@@ -5,77 +7,75 @@ import {
   FiSearch,
 } from "react-icons/fi";
 
-import { useNavigate } from "react-router-dom";
-
 import "./KnowledgeSubPage.css";
-
-const technologies = [
-  {
-    title: "Python",
-    slug: "python",
-    description:
-      "Widely used across AI, data science, automation and backend projects.",
-    projects: "428 projects",
-    category: "Programming",
-  },
-  {
-    title: "React",
-    slug: "react",
-    description:
-      "Used to build interactive campus applications and student projects.",
-    projects: "216 projects",
-    category: "Frontend",
-  },
-  {
-    title: "FastAPI",
-    slug: "fastapi",
-    description:
-      "A popular backend framework used for AI and data-driven applications.",
-    projects: "142 projects",
-    category: "Backend",
-  },
-  {
-    title: "PostgreSQL",
-    slug: "postgresql",
-    description:
-      "A major database technology used by campus applications and research.",
-    projects: "187 projects",
-    category: "Database",
-  },
-  {
-    title: "Machine Learning",
-    slug: "machine-learning",
-    description:
-      "Applied across prediction, classification and intelligence projects.",
-    projects: "326 projects",
-    category: "Artificial Intelligence",
-  },
-  {
-    title: "Computer Vision",
-    slug: "computer-vision",
-    description:
-      "Used for image understanding, recognition and intelligent systems.",
-    projects: "154 projects",
-    category: "Artificial Intelligence",
-  },
-];
+import { getKnowledgeByCategory } from "./knowledgeData";
 
 function KnowledgeTechnologies() {
   const navigate = useNavigate();
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
+
+  const allTechnologies = useMemo(
+    () => getKnowledgeByCategory("technologies"),
+    []
+  );
+
+  const availableCategories = useMemo(() => {
+    const categories = new Set(
+      allTechnologies.map((tech) => tech.category).filter(Boolean)
+    );
+    return ["All Categories", ...Array.from(categories)];
+  }, [allTechnologies]);
+
+  const filteredTechnologies = useMemo(() => {
+    return allTechnologies.filter((tech) => {
+      const matchesCategory =
+        selectedCategory === "All Categories" ||
+        tech.category === selectedCategory;
+
+      const q = searchQuery.trim().toLowerCase();
+      const matchesSearch =
+        !q ||
+        tech.title.toLowerCase().includes(q) ||
+        tech.description.toLowerCase().includes(q) ||
+        (tech.category && tech.category.toLowerCase().includes(q)) ||
+        (tech.technologies &&
+          tech.technologies.some((t) => t.toLowerCase().includes(q)));
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [allTechnologies, searchQuery, selectedCategory]);
+
+  const resetFilters = () => {
+    setSearchQuery("");
+    setSelectedCategory("All Categories");
+  };
+
   return (
     <main className="knowledge-subpage">
+      {/* BREADCRUMB & BACK */}
+      <div className="knowledge-subpage-nav">
+        <button
+          className="knowledge-back-button"
+          onClick={() => navigate("/student/knowledge")}
+          type="button"
+        >
+          <FiArrowLeft size={17} />
+          Back to Knowledge
+        </button>
 
-      <button
-        className="knowledge-back-button"
-        onClick={() => navigate("/student/knowledge")}
-      >
-        <FiArrowLeft size={17} />
-        Back to Knowledge
-      </button>
+        <nav className="knowledge-breadcrumb" aria-label="Breadcrumb">
+          <button type="button" onClick={() => navigate("/student/knowledge")}>
+            Knowledge
+          </button>
+          <span className="sep">/</span>
+          <span className="current">Technologies</span>
+        </nav>
+      </div>
 
+      {/* HERO */}
       <section className="knowledge-subhero">
-
         <div>
           <div className="knowledge-sub-eyebrow">
             <span />
@@ -83,100 +83,129 @@ function KnowledgeTechnologies() {
           </div>
 
           <h1>
-            Technologies being
+            Technologies in
             <br />
-            used across <em>campus.</em>
+            campus <em>use.</em>
           </h1>
 
           <p>
-            Discover the technologies, frameworks
-            and tools students and faculty are
-            actively using.
+            Explore programming languages, frameworks, AI libraries and database
+            systems actively leveraged across student capstones and departmental labs.
           </p>
         </div>
 
-        <div className="knowledge-sub-icon orange">
+        <div className="knowledge-sub-icon orange" aria-hidden="true">
           <FiCode size={44} />
         </div>
-
       </section>
 
+      {/* SEARCH BAR */}
       <div className="knowledge-sub-search">
-        <FiSearch size={21} />
+        <FiSearch size={21} aria-hidden="true" />
 
         <input
           type="text"
-          placeholder="Search technologies..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search technologies, frameworks, datastores..."
+          aria-label="Search technologies"
         />
+
+        {searchQuery && (
+          <button
+            type="button"
+            className="knowledge-sub-search-clear"
+            onClick={() => setSearchQuery("")}
+            aria-label="Clear technology search"
+          >
+            ×
+          </button>
+        )}
       </div>
 
-      <section className="knowledge-subsection">
+      {/* FILTER CHIPS */}
+      <div className="knowledge-filter-bar">
+        {availableCategories.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            className={`filter-chip ${selectedCategory === cat ? "active" : ""}`}
+            onClick={() => setSelectedCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
+      {/* SECTION */}
+      <section className="knowledge-subsection">
         <div className="knowledge-subsection-header">
           <div>
-            <span>TECHNOLOGY NETWORK</span>
-            <h2>Explore technologies</h2>
+            <span>TECH STACK INDEX</span>
+            <h2>Active campus tools</h2>
           </div>
 
           <strong>
-            {technologies.length} technologies
+            {filteredTechnologies.length}{" "}
+            {filteredTechnologies.length === 1
+              ? "technology found"
+              : "technologies found"}
           </strong>
         </div>
 
-        <div className="knowledge-item-grid">
+        {filteredTechnologies.length > 0 ? (
+          <div className="knowledge-item-grid">
+            {filteredTechnologies.map((tech) => (
+              <article className="knowledge-item-card" key={tech.slug}>
+                <div className="knowledge-item-top">
+                  <div className="knowledge-item-icon orange">
+                    <FiCode size={21} />
+                  </div>
 
-          {technologies.map((technology) => (
-            <article
-              className="knowledge-item-card"
-              key={technology.title}
-            >
-
-              <div className="knowledge-item-top">
-
-                <div className="knowledge-item-icon orange">
-                  <FiCode size={21} />
+                  <span className="technology-project-count">
+                    {tech.projects}
+                  </span>
                 </div>
 
-                <span className="technology-project-count">
-                  {technology.projects}
-                </span>
+                <div className="knowledge-item-type">TECHNOLOGY</div>
 
-              </div>
+                <h3>{tech.title}</h3>
 
-              <div className="knowledge-item-type">
-                TECHNOLOGY
-              </div>
+                <p>{tech.description}</p>
 
-              <h3>
-                {technology.title}
-              </h3>
+                <div className="knowledge-item-meta">
+                  <span>{tech.category}</span>
+                  <span>{tech.owner}</span>
+                </div>
 
-              <p>
-                {technology.description}
-              </p>
-
-              <div className="knowledge-item-meta">
-                <span>{technology.category}</span>
-              </div>
-
-              <button
-                className="knowledge-item-action"
-                type="button"
-                onClick={() =>
-                  navigate(`/student/knowledge/item/${technology.slug}`)
-                }
-              >
-                Explore usage
-                <FiArrowRight size={16} />
-              </button>
-
-            </article>
-          ))}
-
-        </div>
-
+                <button
+                  className="knowledge-item-action"
+                  type="button"
+                  onClick={() => navigate(`/student/knowledge/item/${tech.slug}`)}
+                >
+                  Explore usage
+                  <FiArrowRight size={16} />
+                </button>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="knowledge-empty-state">
+            <FiSearch size={32} />
+            <h3>No technologies found</h3>
+            <p>
+              No technologies match your current search or category filter.
+            </p>
+            <button
+              type="button"
+              className="knowledge-empty-reset-btn"
+              onClick={resetFilters}
+            >
+              Reset filters
+            </button>
+          </div>
+        )}
       </section>
-
     </main>
   );
 }

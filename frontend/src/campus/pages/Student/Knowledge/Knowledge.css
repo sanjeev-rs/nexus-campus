@@ -1433,13 +1433,104 @@
 .knowledge-no-results p {
   max-width: 520px;
 
-  margin: 0;
+  margin: 0 0 20px;
 
   color: #71879e;
 
   font-size: 15px;
   line-height: 1.6;
 }
+
+.clear-search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+
+  border: 1px solid rgba(20, 116, 223, 0.28);
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #1474df;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  background: #1474df;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(20, 116, 223, 0.2);
+}
+
+.search-count-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 14px;
+
+  border-radius: 100px;
+  border: 1px solid rgba(170, 201, 229, 0.45);
+
+  background: rgba(255, 255, 255, 0.95);
+  color: #557291;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.knowledge-tag-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin-top: 10px;
+}
+
+.mini-tag {
+  display: inline-block;
+
+  padding: 3px 9px;
+
+  border-radius: 6px;
+  background: rgba(20, 116, 223, 0.08);
+
+  color: #146fd3;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.recommended-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin: 12px 0 16px;
+}
+
+.recommended-card-tags span {
+  display: inline-block;
+
+  padding: 3px 8px;
+
+  border-radius: 6px;
+  border: 1px solid rgba(170, 201, 229, 0.4);
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #527091;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
 
 
 /* =========================================================
