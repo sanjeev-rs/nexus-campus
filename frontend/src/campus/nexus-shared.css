@@ -1,0 +1,556 @@
+/* =========================================================
+   NEXUS CAMPUS — GLOBAL SHARED TOKENS & BASE STYLES
+   Phase 4.5 — imported by CampusLayout
+   ========================================================= */
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root {
+  /* Brand colours */
+  --nx-blue:          #1474df;
+  --nx-blue-dark:     #0d5fc2;
+  --nx-blue-deeper:   #0b4fa8;
+  --nx-blue-light:    #eaf4ff;
+  --nx-blue-mid:      #dbeafe;
+
+  --nx-navy:          #102544;
+  --nx-navy-soft:     #1e3a5a;
+
+  --nx-green:         #16a34a;
+  --nx-purple:        #7c3aed;
+  --nx-orange:        #ea580c;
+  --nx-red:           #dc2626;
+
+  /* Text scale — target: body 15-16px, secondary 14px */
+  --nx-text-xs:       0.72rem;   /* ~11.5px */
+  --nx-text-sm:       0.82rem;   /* ~13px   */
+  --nx-text-base:     0.9375rem; /* 15px    */
+  --nx-text-md:       1rem;      /* 16px    */
+  --nx-text-lg:       1.125rem;  /* 18px    */
+  --nx-text-xl:       1.25rem;   /* 20px    */
+  --nx-text-2xl:      1.5rem;    /* 24px    */
+  --nx-text-3xl:      1.875rem;  /* 30px    */
+
+  /* Surface */
+  --nx-surface:       #ffffff;
+  --nx-surface-soft:  #f4f8fc;
+  --nx-surface-dim:   #edf3fa;
+
+  /* Borders */
+  --nx-border:        #dce7f2;
+  --nx-border-light:  #e8f0f8;
+  --nx-border-focus:  #93c5fd;
+
+  /* Shadows */
+  --nx-shadow-sm:     0 1px 4px rgba(16, 37, 68, 0.06);
+  --nx-shadow-md:     0 4px 16px rgba(16, 37, 68, 0.08);
+  --nx-shadow-lg:     0 12px 36px rgba(16, 37, 68, 0.10);
+  --nx-shadow-xl:     0 24px 60px rgba(16, 37, 68, 0.12);
+
+  /* Radius */
+  --nx-radius-sm:     8px;
+  --nx-radius-md:     12px;
+  --nx-radius-lg:     16px;
+  --nx-radius-xl:     20px;
+  --nx-radius-2xl:    24px;
+
+  /* Spacing */
+  --nx-space-1:       4px;
+  --nx-space-2:       8px;
+  --nx-space-3:       12px;
+  --nx-space-4:       16px;
+  --nx-space-5:       20px;
+  --nx-space-6:       24px;
+  --nx-space-8:       32px;
+  --nx-space-10:      40px;
+  --nx-space-12:      48px;
+  --nx-space-16:      64px;
+
+  /* Touch targets */
+  --nx-touch-min:     44px;
+}
+
+/* =========================================================
+   GLOBAL RESET ADDITIONS
+   ========================================================= */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   POINTER-EVENTS — DECORATIVE ELEMENTS
+   Covers Dashboard, Intelligence, Projects, Goals, Knowledge
+   and any orbit/ring/glow used across pages.
+   Root cause fix: decorative pseudo-elements and absolute
+   overlay divs must never intercept pointer events.
+   ========================================================= */
+
+/* Pseudo-elements */
+.student-dashboard::before,
+.student-dashboard::after,
+.student-intelligence::before,
+.student-intelligence::after,
+.student-projects::before,
+.student-projects::after,
+.student-welcome::before,
+.student-welcome::after,
+.student-intelligence .intelligence-header::before,
+.student-intelligence .intelligence-header::after,
+.student-projects .projects-hero::before,
+.student-projects .projects-hero::after,
+.student-kpi::before,
+.opportunity-card::before,
+.dashboard-card::before,
+.goals-hero::before,
+.goals-hero::after {
+  pointer-events: none !important;
+}
+
+/* Named decorative divs */
+.student-welcome-glow,
+.card-top-glow,
+.orbit-ring,
+.orbit-ring-one,
+.orbit-ring-two,
+.orbit-ring-three,
+.student-intelligence .brain-ring,
+.student-intelligence .ring-one,
+.student-intelligence .ring-two,
+.student-intelligence .ring-three,
+.student-projects .project-orbit,
+.student-projects .orbit-node,
+.goals-orbit,
+.goals-orbit-two,
+.knowledge-orbit,
+.knowledge-node,
+.project-orbit,
+.project-floating-icon,
+.intel-orbit,
+.intel-ring,
+.intel-node,
+.si-orbit,
+.si-ring {
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   Z-INDEX: CONTENT ABOVE DECORATIVE LAYERS
+   Applied broadly so every page's interactive content sits
+   above its own atmospheric pseudo-elements.
+   ========================================================= */
+
+.student-welcome-content,
+.intelligence-header-content,
+.student-intelligence .intelligence-score-section,
+.student-intelligence .intelligence-section,
+.student-projects .projects-hero-content,
+.student-projects .projects-section,
+.projects-hero-actions,
+.projects-hero-actions > *,
+.card-action,
+.section-link,
+.section-action,
+.nba-action,
+.profile-cta-button,
+.pproject-open,
+/* Phase 4.5 page content */
+.goals-hero-content,
+.progress-hero-content,
+.ai-mentor-header,
+.ai-mentor-body,
+.community-hero-content,
+.settings-header,
+.profile-hero-content,
+/* Section & card content */
+.goals-section,
+.progress-section,
+.profile-section,
+.community-main,
+.community-sidebar,
+.settings-layout {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   FOCUS STATES — GLOBAL
+   Never remove focus visibility for keyboard users.
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--nx-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   TOUCH TARGETS — GLOBAL MINIMUM
+   Any button or anchor that is visually smaller than 44px
+   tall should be boosted via min-height. We handle the most
+   common patterns globally and let per-page CSS extend them.
+   ========================================================= */
+
+/* Tiny "view all" link-buttons that appear on every page */
+.goals-view-link,
+.progress-view-link,
+.profile-view-link,
+.community-start-post,
+.goals-ai-badge,
+.nba-action {
+  min-height: var(--nx-touch-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Chip / pill buttons */
+.ai-chip,
+.ai-prompt-chip,
+.community-topic,
+.community-like {
+  min-height: 36px; /* compact but reachable */
+}
+
+/* =========================================================
+   SHARED BUTTON SYSTEM
+   ========================================================= */
+
+/* Primary */
+.nx-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--nx-touch-min);
+  padding: 0 22px;
+  background: var(--nx-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--nx-radius-md);
+  font-family: inherit;
+  font-size: var(--nx-text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
+}
+.nx-btn-primary:hover { background: var(--nx-blue-dark); }
+.nx-btn-primary:active { transform: scale(0.98); }
+
+/* Secondary */
+.nx-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--nx-touch-min);
+  padding: 0 20px;
+  background: var(--nx-surface);
+  color: var(--nx-navy);
+  border: 1px solid var(--nx-border);
+  border-radius: var(--nx-radius-md);
+  font-family: inherit;
+  font-size: var(--nx-text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
+}
+.nx-btn-secondary:hover { border-color: #93c5fd; background: #f8fbff; }
+.nx-btn-secondary:active { transform: scale(0.98); }
+
+/* Ghost/text */
+.nx-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--nx-touch-min);
+  padding: 0 12px;
+  background: none;
+  border: none;
+  color: var(--nx-blue);
+  font-family: inherit;
+  font-size: var(--nx-text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
+}
+.nx-btn-ghost:hover { opacity: 0.75; }
+
+/* =========================================================
+   SHARED CARD SYSTEM
+   ========================================================= */
+
+.nx-card {
+  background: var(--nx-surface);
+  border: 1px solid var(--nx-border-light);
+  border-radius: var(--nx-radius-xl);
+  padding: var(--nx-space-6);
+  box-shadow: var(--nx-shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.nx-card:hover {
+  border-color: #c3d9f0;
+  box-shadow: var(--nx-shadow-md);
+}
+
+/* =========================================================
+   SHARED EYEBROW
+   ========================================================= */
+
+.nx-eyebrow {
+  display: block;
+  font-size: var(--nx-text-xs);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nx-blue);
+  margin-bottom: 8px;
+}
+
+/* =========================================================
+   SHARED SECTION PATTERN
+   ========================================================= */
+
+.nx-section {
+  margin-bottom: 52px;
+}
+
+.nx-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.nx-section-heading h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--nx-navy);
+  margin: 4px 0 0;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   PAGE WRAPPER STANDARD
+   ========================================================= */
+
+.nx-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+@media (max-width: 900px) {
+  .nx-page { padding: 24px 20px 64px; }
+}
+
+/* =========================================================
+   TYPOGRAPHY POLISH — PHASE 4.5 PAGES
+   Target: body 15px, secondary 14px, card titles 17-20px,
+   section headings 22-28px, page titles 28-34px.
+   These selectors raise the floor on smaller pages.
+   ========================================================= */
+
+/* --- Goals --- */
+.student-goals {
+  font-size: 0.9375rem; /* 15px base */
+}
+.goals-hero-content p,
+.nba-card p,
+.goal-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.goals-hero-content h1 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  letter-spacing: -0.03em;
+}
+.goals-section-heading h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+}
+.nba-card h3 {
+  font-size: 1.02rem;
+}
+.goal-card h3 {
+  font-size: 1.02rem;
+}
+.goals-stat-card strong {
+  font-size: 1.65rem;
+}
+
+/* --- Progress --- */
+.student-progress {
+  font-size: 0.9375rem;
+}
+.progress-hero-content p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.progress-hero-content h1 {
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  letter-spacing: -0.03em;
+}
+.progress-section-heading h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+}
+.progress-project-card h3 {
+  font-size: 1rem;
+}
+.progress-skill-name {
+  font-size: 0.9rem;
+}
+
+/* --- AI Mentor --- */
+.ai-mentor {
+  font-size: 0.9375rem;
+}
+.ai-message-bubble {
+  font-size: 0.9375rem;
+}
+.ai-mentor-identity h1 {
+  font-size: 1.25rem;
+}
+.ai-mentor-empty h2 {
+  font-size: 1.35rem;
+}
+.ai-mentor-empty p {
+  font-size: 0.9375rem;
+}
+.ai-composer-input {
+  font-size: 0.9375rem;
+}
+
+/* --- Community --- */
+.student-community {
+  font-size: 0.9375rem;
+}
+.community-hero-content h1 {
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  letter-spacing: -0.03em;
+}
+.community-hero-content p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.community-post h3 {
+  font-size: 1.02rem;
+}
+.community-post > p {
+  font-size: 0.9rem;
+}
+.community-post-author strong {
+  font-size: 0.9rem;
+}
+
+/* --- Settings --- */
+.student-settings {
+  font-size: 0.9375rem;
+}
+.settings-header h1 {
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+}
+.settings-row strong {
+  font-size: 0.9375rem;
+}
+.settings-row p {
+  font-size: 0.85rem;
+}
+.settings-section h2 {
+  font-size: 1.2rem;
+}
+.settings-nav-item {
+  font-size: 0.9rem;
+}
+
+/* --- Profile --- */
+.student-profile {
+  font-size: 0.9375rem;
+}
+.profile-identity-top h1 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+.profile-section-heading h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+}
+.profile-info-card h2 {
+  font-size: 1.1rem;
+}
+.profile-project-card h3 {
+  font-size: 1.02rem;
+}
+.profile-checklist-item {
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   VISUAL POLISH — INPUTS GLOBAL
+   ========================================================= */
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* =========================================================
+   HOVER / FOCUS STATE POLISH — LINK BUTTONS
+   ========================================================= */
+
+.goals-view-link,
+.progress-view-link,
+.profile-view-link {
+  border-radius: 8px;
+  padding: 4px 8px;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+}
+
+.goals-view-link:hover,
+.progress-view-link:hover,
+.profile-view-link:hover {
+  background: #eff6ff;
+  opacity: 1;
+  color: #0d5fc2;
+}
+
+/* Settings nav active/hover enhancement */
+.settings-nav-item:focus-visible {
+  outline: 2px solid var(--nx-blue);
+  outline-offset: 1px;
+}
+
+/* =========================================================
+   MOTION PREFERENCE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

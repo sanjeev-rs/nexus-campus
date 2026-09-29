@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./CampusLayout.css";
+import "../../nexus-shared.css";
 
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Topbar from "../../components/Topbar/Topbar";

@@ -126,6 +126,10 @@
       rgba(55,142,239,.16),
       transparent 70%
     );
+
+  pointer-events: none;
+
+  z-index: 0;
 }
 
 
@@ -302,6 +306,8 @@
   border-radius: 50%;
 
   transform: translate(-50%,-50%);
+
+  pointer-events: none;
 }
 
 

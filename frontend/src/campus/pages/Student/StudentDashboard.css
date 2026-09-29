@@ -298,6 +298,8 @@
   border-radius: 50%;
 
   transform: translate(-50%, -50%);
+
+  pointer-events: none;
 }
 
 .orbit-ring-one {
