@@ -1679,3 +1679,87 @@
     height: 310px;
   }
 }
+
+/* =========================================================
+   PROJECT NOT FOUND STATE
+   ========================================================= */
+
+.project-not-found {
+  max-width: 540px;
+  margin: 80px auto;
+  padding: 60px 48px;
+  text-align: center;
+
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(16, 37, 68, 0.06);
+}
+
+.project-not-found-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f4f8fc;
+  border: 1px solid #e1e9f2;
+  border-radius: 18px;
+  color: #2563eb;
+}
+
+.project-not-found h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 12px 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.project-not-found p {
+  font-size: 0.96rem;
+  color: #4a6080;
+  line-height: 1.65;
+  margin: 0 0 32px;
+}
+
+.project-not-found-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   COLLABORATION FEEDBACK STATES
+   ========================================================= */
+
+.collaboration-success,
+.collaboration-duplicate {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 20px;
+
+  border-radius: 12px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.collaboration-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.collaboration-duplicate {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  color: #0369a1;
+}

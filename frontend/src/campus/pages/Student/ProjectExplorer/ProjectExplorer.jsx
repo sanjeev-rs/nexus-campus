@@ -8,7 +8,6 @@ import {
   Filter,
   FolderKanban,
   Search,
-  Users,
   X,
 } from "lucide-react";
 

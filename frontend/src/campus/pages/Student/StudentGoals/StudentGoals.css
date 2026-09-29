@@ -1,0 +1,721 @@
+/* =========================================================
+   STUDENT GOALS
+   ========================================================= */
+
+.student-goals {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+/* =========================================================
+   EYEBROW UTILS
+   ========================================================= */
+
+.goals-eyebrow {
+  display: block;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.goals-eyebrow-sm {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #7a94b0;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.goals-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 48px;
+  position: relative;
+  padding: 48px 52px;
+  background: linear-gradient(135deg, #f0f6ff 0%, #f7faff 100%);
+  border: 1px solid #dbeafe;
+  border-radius: 24px;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.goals-hero-content {
+  flex: 1;
+  min-width: 240px;
+  position: relative;
+  z-index: 1;
+}
+
+.goals-hero-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.goals-hero-content h1 span {
+  color: #2563eb;
+}
+
+.goals-hero-content p {
+  font-size: 1rem;
+  color: #4a6080;
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0;
+}
+
+.goals-hero-visual {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+}
+
+.goals-orbit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(37, 99, 235, 0.2);
+  animation: goals-spin 14s linear infinite;
+}
+
+.goals-orbit-two {
+  inset: 20px;
+  animation-direction: reverse;
+  animation-duration: 10s;
+  border-color: rgba(37, 99, 235, 0.12);
+}
+
+@keyframes goals-spin {
+  to { transform: rotate(360deg); }
+}
+
+.goals-core {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  background: #fff;
+  border: 1px solid #bfdbfe;
+  border-radius: 50%;
+  color: #2563eb;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+}
+
+/* =========================================================
+   OVERVIEW STRIP
+   ========================================================= */
+
+.goals-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 52px;
+}
+
+.goals-stat-card {
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.goals-stat-card span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: #7a94b0;
+  text-transform: uppercase;
+}
+
+.goals-stat-card strong {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #102544;
+  line-height: 1;
+}
+
+.goals-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goals-stat-icon.blue { background: #eff6ff; color: #2563eb; }
+.goals-stat-icon.green { background: #f0fdf4; color: #16a34a; }
+.goals-stat-icon.purple { background: #f5f3ff; color: #7c3aed; }
+.goals-stat-icon.orange { background: #fff7ed; color: #ea580c; }
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.goals-section {
+  margin-bottom: 52px;
+}
+
+.goals-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.goals-section-heading h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 4px 0 0;
+  letter-spacing: -0.02em;
+}
+
+.goals-ai-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #7c3aed;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  padding: 5px 12px;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+
+.goals-view-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2563eb;
+  cursor: pointer;
+  padding: 0;
+}
+
+.goals-view-link:hover { opacity: 0.75; }
+
+/* =========================================================
+   NEXT BEST ACTIONS
+   ========================================================= */
+
+.nba-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.nba-card {
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 18px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.nba-card:hover {
+  box-shadow: 0 4px 18px rgba(16, 37, 68, 0.07);
+}
+
+.nba-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nba-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nba-icon-blue { background: #eff6ff; color: #2563eb; }
+.nba-icon-purple { background: #f5f3ff; color: #7c3aed; }
+.nba-icon-green { background: #f0fdf4; color: #16a34a; }
+
+.nba-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #7a94b0;
+  text-transform: uppercase;
+}
+
+.nba-card h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.nba-card p {
+  font-size: 0.86rem;
+  color: #4a6080;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.nba-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: auto;
+  transition: opacity 0.15s;
+}
+
+.nba-action:hover { opacity: 0.85; }
+
+.nba-action-blue { background: #eff6ff; color: #2563eb; }
+.nba-action-purple { background: #f5f3ff; color: #7c3aed; }
+.nba-action-green { background: #f0fdf4; color: #16a34a; }
+
+/* =========================================================
+   GOALS LIST
+   ========================================================= */
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.goal-card {
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.goal-card:hover {
+  border-color: #bfdbfe;
+}
+
+.goal-card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+}
+
+.goal-card-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.goal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.goal-priority-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.goal-priority-high {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.goal-priority-medium {
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #fed7aa;
+}
+
+.goal-priority-low {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.goal-category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #7a94b0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.goal-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 8px;
+}
+
+.goal-card p {
+  font-size: 0.87rem;
+  color: #4a6080;
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
+
+.goal-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.goal-progress-bar {
+  flex: 1;
+  height: 5px;
+  background: #e8f0fa;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.goal-progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 99px;
+}
+
+.goal-progress-value {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #102544;
+  white-space: nowrap;
+}
+
+.goal-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #7a94b0;
+}
+
+.goal-expand-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7a94b0;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.goal-expand-btn:hover {
+  background: #f4f8fc;
+  color: #2563eb;
+}
+
+.goal-expand-btn svg {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.goal-expand-btn.open svg {
+  transform: rotate(90deg);
+}
+
+/* EXPANDED PANEL */
+.goal-actions-panel {
+  border-top: 1px solid #f0f5fb;
+  padding: 20px 24px 22px;
+  background: #fafcff;
+}
+
+.goal-actions-label {
+  display: block;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: #7a94b0;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.goal-action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goal-action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.87rem;
+  color: #2d4a6a;
+  line-height: 1.5;
+}
+
+.goal-action-item svg {
+  flex-shrink: 0;
+  margin-top: 5px;
+  color: #2563eb;
+}
+
+/* =========================================================
+   SKILL TARGETS
+   ========================================================= */
+
+.skill-targets-card {
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 16px;
+  padding: 28px 28px 20px;
+}
+
+.skill-target-row {
+  margin-bottom: 22px;
+}
+
+.skill-target-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.skill-target-info > span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #102544;
+}
+
+.skill-target-values {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+}
+
+.skill-target-values strong {
+  font-weight: 700;
+  color: #102544;
+}
+
+.target-sep {
+  color: #9ab0c8;
+}
+
+.skill-target-goal {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.skill-target-bar {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  background: #e8f0fa;
+  border-radius: 99px;
+  overflow: visible;
+}
+
+.skill-target-current {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 99px;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-target-marker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 13px;
+  background: #7c3aed;
+  border-radius: 1px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.skill-targets-note {
+  font-size: 0.78rem;
+  color: #9ab0c8;
+  line-height: 1.55;
+  margin: 14px 0 4px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f5fb;
+  font-style: italic;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.goals-intelligence-cta {
+  background: linear-gradient(135deg, #f5f3ff 0%, #f0f6ff 100%);
+  border: 1px solid #ddd6fe;
+  border-radius: 20px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.goals-cta-icon {
+  width: 56px;
+  height: 56px;
+  background: #fff;
+  border: 1px solid #ddd6fe;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.goals-intelligence-cta > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.goals-intelligence-cta span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #7c3aed;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.goals-intelligence-cta h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.goals-intelligence-cta p {
+  font-size: 0.86rem;
+  color: #4a6080;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.goals-intelligence-cta button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.goals-intelligence-cta button:hover {
+  background: #6d28d9;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .nba-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .student-goals {
+    padding: 24px 20px 60px;
+  }
+
+  .goals-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .goals-hero {
+    padding: 32px 28px;
+    flex-direction: column;
+  }
+
+  .goals-hero-visual {
+    display: none;
+  }
+
+  .nba-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goals-intelligence-cta {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .goals-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skill-target-values {
+    font-size: 0.78rem;
+  }
+}

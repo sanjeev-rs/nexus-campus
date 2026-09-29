@@ -10,7 +10,6 @@ import {
   GitBranch,
   Layers3,
   Network,
-  Plus,
   Search,
   Sparkles,
   Target,

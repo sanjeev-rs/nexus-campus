@@ -9,11 +9,13 @@ import {
   Code2,
   ExternalLink,
   FileText,
+  FolderKanban,
   GitBranch,
   GraduationCap,
   Mail,
   Network,
   Phone,
+  Search,
   Send,
   Sparkles,
   Target,
@@ -25,13 +27,281 @@ import {
   useParams,
 } from "react-router-dom";
 
+import { useState } from "react";
+
 
 /* =========================================================
    DEMO PROJECT DATA
    Later this will come from your backend/database.
    ========================================================= */
 
+/* =========================================================
+   PROJECT DATA REGISTRY
+   Keyed by project ID — matches routes from StudentProjects
+   and ProjectExplorer. IDs ending in /explore/:id also land
+   here. A missing key shows the not-found state.
+   ========================================================= */
+
 const projectData = {
+  /* -------------------------------------------------------
+     IDs used by StudentProjects.jsx "Open" buttons
+     ------------------------------------------------------- */
+  "nexus": {
+    title: "NEXUS",
+    category: "AI / Campus",
+    status: "In progress",
+    description:
+      "AI-powered Campus Intelligence System connecting student development, skills, projects, knowledge and institutional intelligence.",
+    department: "AI & Data Science",
+    departmentId: "AIDS-01",
+    projectType: "Academic + Industry",
+    academicYear: "2026",
+    startDate: "August 2025",
+    endDate: "In progress",
+    problem:
+      "Campus information is siloed across disconnected systems, making it difficult for students and faculty to get a coherent picture of development, projects and opportunities.",
+    objective:
+      "Build a unified campus intelligence platform that connects student profiles, projects, skills, knowledge and institutional data into one actionable system.",
+    technologies: ["React", "FastAPI", "PostgreSQL", "Python", "AI", "Vite"],
+    githubUrl: null,
+    publishedUrl: null,
+    mentor: {
+      name: "Dr. Ramesh Iyer",
+      designation: "Associate Professor",
+      department: "AI & Data Science",
+      departmentId: "AIDS-01",
+      email: "ramesh.iyer@campus.edu",
+    },
+    members: [
+      {
+        name: "S. Vikram",
+        role: "Project Lead",
+        department: "AI & Data Science",
+        year: "III Year",
+        email: "s.vikram@campus.edu",
+        phone: "+91 98765 10001",
+      },
+      {
+        name: "V. Preethi",
+        role: "Frontend Developer",
+        department: "Computer Science",
+        year: "III Year",
+        email: "v.preethi@campus.edu",
+        phone: "+91 98765 10002",
+      },
+      {
+        name: "A. Suresh",
+        role: "Backend Developer",
+        department: "Computer Science",
+        year: "II Year",
+        email: "a.suresh@campus.edu",
+        phone: "+91 98765 10003",
+      },
+      {
+        name: "N. Kavya",
+        role: "AI/ML Engineer",
+        department: "AI & Data Science",
+        year: "II Year",
+        email: "n.kavya@campus.edu",
+        phone: "+91 98765 10004",
+      },
+    ],
+    documents: [
+      { name: "System Design Document", type: "PDF", url: null },
+      { name: "API Specification", type: "PDF", url: null },
+      { name: "Project Proposal", type: "PDF", url: null },
+    ],
+    milestones: [
+      {
+        title: "Project scoping & design",
+        description: "Architecture and system design finalised.",
+        date: "Sep 2025",
+      },
+      {
+        title: "Backend foundation",
+        description: "FastAPI + PostgreSQL pipeline operational.",
+        date: "Nov 2025",
+      },
+      {
+        title: "Frontend shell",
+        description: "React + Vite campus layout and routing complete.",
+        date: "Feb 2026",
+      },
+      {
+        title: "Student intelligence module",
+        description: "Skill intelligence and profile system live.",
+        date: "May 2026",
+      },
+      {
+        title: "Full platform launch",
+        description: "All modules integrated and production-ready.",
+        date: "Oct 2026",
+      },
+    ],
+    dna: [
+      { label: "Technical depth", value: 91 },
+      { label: "Problem solving", value: 88 },
+      { label: "Collaboration", value: 84 },
+      { label: "Research", value: 79 },
+      { label: "Real-world impact", value: 93 },
+    ],
+  },
+
+  "ai-agent-accountability": {
+    title: "AI Agent Accountability",
+    category: "AI / Trust",
+    status: "In progress",
+    description:
+      "Trust infrastructure for tracking AI agent decisions, actions and accountability through verifiable records.",
+    department: "Computer Science",
+    departmentId: "CSE-01",
+    projectType: "Research",
+    academicYear: "2026",
+    startDate: "February 2026",
+    endDate: "In progress",
+    problem:
+      "As AI agents operate autonomously across systems, there is no standard mechanism to audit their decisions, track responsibility, or provide verifiable accountability logs.",
+    objective:
+      "Design and implement a trust engine that records AI agent decisions with cryptographic proofs, enabling transparent accountability across autonomous systems.",
+    technologies: ["FastAPI", "SQLite", "Python", "Trust Engine", "Cryptography"],
+    githubUrl: null,
+    publishedUrl: null,
+    mentor: {
+      name: "Dr. Arun Prakash",
+      designation: "Professor",
+      department: "Computer Science",
+      departmentId: "CSE-01",
+      email: "arun.prakash@campus.edu",
+    },
+    members: [
+      {
+        name: "S. Vikram",
+        role: "Lead Researcher",
+        department: "Computer Science",
+        year: "III Year",
+        email: "s.vikram@campus.edu",
+        phone: "+91 98765 10001",
+      },
+      {
+        name: "R. Dinesh",
+        role: "Systems Architect",
+        department: "Computer Science",
+        year: "III Year",
+        email: "r.dinesh@campus.edu",
+        phone: "+91 98765 20001",
+      },
+      {
+        name: "M. Harini",
+        role: "Backend Developer",
+        department: "AI & Data Science",
+        year: "II Year",
+        email: "m.harini@campus.edu",
+        phone: "+91 98765 20002",
+      },
+    ],
+    documents: [
+      { name: "Research Proposal", type: "PDF", url: null },
+      { name: "Trust Engine Specification", type: "PDF", url: null },
+    ],
+    milestones: [
+      {
+        title: "Research problem definition",
+        description: "Accountability model scoped and validated.",
+        date: "Feb 2026",
+      },
+      {
+        title: "Trust engine prototype",
+        description: "Core accountability logging mechanism implemented.",
+        date: "Apr 2026",
+      },
+      {
+        title: "Integration testing",
+        description: "Engine tested against multi-agent scenario.",
+        date: "Jul 2026",
+      },
+      {
+        title: "Research paper draft",
+        description: "Academic documentation in progress.",
+        date: "Oct 2026",
+      },
+    ],
+    dna: [
+      { label: "Technical depth", value: 84 },
+      { label: "Problem solving", value: 87 },
+      { label: "Collaboration", value: 72 },
+      { label: "Research", value: 91 },
+      { label: "Real-world impact", value: 80 },
+    ],
+  },
+
+  "campus-intelligence": {
+    title: "Campus Intelligence Research",
+    category: "Data / Research",
+    status: "Planning",
+    description:
+      "Exploring how campus data can reveal patterns in student development, collaboration and institutional knowledge.",
+    department: "AI & Data Science",
+    departmentId: "AIDS-02",
+    projectType: "Research",
+    academicYear: "2026",
+    startDate: "June 2026",
+    endDate: "In progress",
+    problem:
+      "Student development patterns across a campus are poorly understood because the data that could reveal them is never collected or analysed in a structured way.",
+    objective:
+      "Research and document patterns in student activity, skill development and collaboration that can inform institutional intelligence systems.",
+    technologies: ["Python", "Data Analysis", "Research", "Statistics"],
+    githubUrl: null,
+    publishedUrl: null,
+    mentor: {
+      name: "Dr. Ananya Rao",
+      designation: "Assistant Professor",
+      department: "AI & Data Science",
+      departmentId: "AIDS-02",
+      email: "ananya.rao@campus.edu",
+    },
+    members: [
+      {
+        name: "S. Vikram",
+        role: "Solo Researcher",
+        department: "AI & Data Science",
+        year: "III Year",
+        email: "s.vikram@campus.edu",
+        phone: "+91 98765 10001",
+      },
+    ],
+    documents: [
+      { name: "Research Outline", type: "PDF", url: null },
+    ],
+    milestones: [
+      {
+        title: "Research question defined",
+        description: "Core research direction identified.",
+        date: "Jun 2026",
+      },
+      {
+        title: "Literature review",
+        description: "Relevant academic literature surveyed.",
+        date: "Aug 2026",
+      },
+      {
+        title: "Data collection framework",
+        description: "Data collection methodology in design.",
+        date: "Oct 2026",
+      },
+    ],
+    dna: [
+      { label: "Technical depth", value: 68 },
+      { label: "Problem solving", value: 74 },
+      { label: "Collaboration", value: 52 },
+      { label: "Research", value: 88 },
+      { label: "Real-world impact", value: 76 },
+    ],
+  },
+
+  /* -------------------------------------------------------
+     IDs used by ProjectExplorer.jsx (explore/:id)
+     ------------------------------------------------------- */
   "smart-campus-analytics": {
     title: "Smart Campus Analytics",
 
@@ -389,10 +659,77 @@ function ProjectDetails() {
 
   const { projectId } = useParams();
 
-  const project =
-    projectData[projectId] ||
-    projectData["smart-campus-analytics"];
+  const project = projectData[projectId] ?? null;
 
+  /* =========================================================
+     COLLABORATION REQUEST STATE
+     No backend connection yet — UI-only acknowledgement.
+     Replace the collab handler body with a real API call later.
+     ========================================================= */
+  const [collabState, setCollabState] = useState("idle"); // idle | requested | duplicate
+
+  const handleRequestCollaboration = () => {
+    if (collabState === "requested") {
+      setCollabState("duplicate");
+      return;
+    }
+    setCollabState("requested");
+  };
+
+  /* =========================================================
+     PROJECT NOT FOUND
+     ========================================================= */
+  if (!project) {
+    return (
+      <div className="project-details">
+        <button
+          type="button"
+          className="project-details-back"
+          onClick={() => navigate("/student/projects/explore")}
+        >
+          <ArrowLeft size={19} />
+          <span>Back to Explore Projects</span>
+        </button>
+
+        <section className="project-not-found">
+          <div className="project-not-found-icon">
+            <FolderKanban size={42} />
+          </div>
+
+          <div className="project-details-eyebrow">
+            NEXUS / PROJECT INTELLIGENCE
+          </div>
+
+          <h1>Project not found</h1>
+
+          <p>
+            The project you are looking for does not exist in the NEXUS campus
+            network, or may have been relocated or removed.
+          </p>
+
+          <div className="project-not-found-actions">
+            <button
+              type="button"
+              className="details-primary-button"
+              onClick={() => navigate("/student/projects/explore")}
+            >
+              <Search size={17} />
+              Explore Projects
+            </button>
+
+            <button
+              type="button"
+              className="details-secondary-button"
+              onClick={() => navigate("/student/projects")}
+            >
+              <ArrowLeft size={17} />
+              My Projects
+            </button>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="project-details">
@@ -1258,19 +1595,37 @@ function ProjectDetails() {
             className="collaborate-button"
           >
             <Send size={18} />
-
             Contact Project Lead
           </a>
 
+          {collabState === "idle" && (
+            <button
+              type="button"
+              className="request-collaboration-button"
+              onClick={handleRequestCollaboration}
+            >
+              Request to Collaborate
+              <ArrowUpRight size={18} />
+            </button>
+          )}
 
-          <button
-            type="button"
-            className="request-collaboration-button"
-          >
-            Request to Collaborate
+          {collabState === "requested" && (
+            <div className="collaboration-success">
+              <CheckCircle2 size={18} />
+              <span>
+                Request sent — the project team has been notified.
+              </span>
+            </div>
+          )}
 
-            <ArrowUpRight size={18} />
-          </button>
+          {collabState === "duplicate" && (
+            <div className="collaboration-duplicate">
+              <CheckCircle2 size={18} />
+              <span>
+                You have already sent a collaboration request for this project.
+              </span>
+            </div>
+          )}
 
         </div>
 

@@ -1,265 +1,340 @@
-import "./Sidebar.css";
-
+import { useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
-  BarChart3,
   BookOpen,
-  BriefcaseBusiness,
+  Bot,
+  ChevronLeft,
+  ChevronRight,
+  Compass,
   FolderKanban,
   Home,
   Network,
+  PlusCircle,
+  Settings,
+  Target,
+  TrendingUp,
+  User,
   Users,
+  X,
 } from "lucide-react";
 
-import {
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import "./Sidebar.css";
 
-
-function Sidebar() {
-
+function Sidebar({
+  isCollapsed = false,
+  onToggleCollapse,
+  mobileOpen = false,
+  onCloseMobile,
+}) {
   const location = useLocation();
   const navigate = useNavigate();
-
   const currentPath = location.pathname;
 
+  // Determine current active role from pathname
+  const currentRole = useMemo(() => {
+    if (currentPath.startsWith("/faculty")) return "faculty";
+    if (currentPath.startsWith("/management")) return "management";
+    return "student";
+  }, [currentPath]);
 
   /* =========================================================
-     MAIN NAVIGATION
+     ROLE-BASED NAVIGATION CONFIGURATION
+     All links map strictly to real, registered routes.
      ========================================================= */
 
-  const mainNavigation = [
-
-    {
-      label: "Overview",
-      icon: Home,
-      path: "/student",
-    },
-
-    {
-      label: "Intelligence",
-      icon: Network,
-      path: "/student/intelligence",
-    },
-
-    {
-      label: "Projects",
-      icon: FolderKanban,
-      path: "/student/projects",
-    },
-
-    {
-      label: "Knowledge",
-      icon: BookOpen,
-      path: "/student/knowledge",
-    },
-
-  ];
-
-
-  /* =========================================================
-     CAMPUS NAVIGATION
-     ========================================================= */
-
-  const campusNavigation = [
-
-    {
-      label: "People",
-      icon: Users,
-      path: "/student/people",
-    },
-
-    {
-      label: "Opportunities",
-      icon: BriefcaseBusiness,
-      path: "/student/opportunities",
-    },
-
-    {
-      label: "Analytics",
-      icon: BarChart3,
-      path: "/student/analytics",
-    },
-
-  ];
-
-
-  /* =========================================================
-     ACTIVE ROUTE
-     ========================================================= */
-
-  const isActive = (path) => {
-
-    /*
-      Overview should only be active on /student.
-      This prevents Overview from remaining active
-      when visiting /student/intelligence.
-    */
-
-    if (path === "/student") {
-      return currentPath === "/student";
+  const navigationSections = useMemo(() => {
+    if (currentRole === "faculty") {
+      return [
+        {
+          title: "FACULTY PORTAL",
+          items: [
+            {
+              label: "Overview",
+              icon: Home,
+              path: "/faculty",
+            },
+          ],
+        },
+      ];
     }
 
-    /*
-      Other pages use an exact route match.
-    */
+    if (currentRole === "management") {
+      return [
+        {
+          title: "MANAGEMENT PORTAL",
+          items: [
+            {
+              label: "Overview",
+              icon: Home,
+              path: "/management",
+            },
+          ],
+        },
+      ];
+    }
 
-    return currentPath === path;
-  };
+    // Default: Student Portal
+    return [
+      {
+        title: "MAIN",
+        items: [
+          {
+            label: "Overview",
+            icon: Home,
+            path: "/student",
+          },
+          {
+            label: "Intelligence",
+            icon: Network,
+            path: "/student/intelligence",
+          },
+          {
+            label: "Projects",
+            icon: FolderKanban,
+            path: "/student/projects",
+          },
+          {
+            label: "Knowledge",
+            icon: BookOpen,
+            path: "/student/knowledge",
+          },
+        ],
+      },
+      {
+        title: "DEVELOPMENT",
+        items: [
+          {
+            label: "Progress",
+            icon: TrendingUp,
+            path: "/student/progress",
+          },
+          {
+            label: "Goals",
+            icon: Target,
+            path: "/student/goals",
+          },
+          {
+            label: "AI Mentor",
+            icon: Bot,
+            path: "/student/ai-mentor",
+          },
+        ],
+      },
+      {
+        title: "COLLABORATION",
+        items: [
+          {
+            label: "Project Explorer",
+            icon: Compass,
+            path: "/student/projects/explore",
+          },
+          {
+            label: "Mentor Network",
+            icon: Users,
+            path: "/student/projects/mentors",
+          },
+          {
+            label: "Submit Project",
+            icon: PlusCircle,
+            path: "/student/projects/upload",
+          },
+          {
+            label: "Community",
+            icon: Users,
+            path: "/student/community",
+          },
+        ],
+      },
+      {
+        title: "ACCOUNT",
+        items: [
+          {
+            label: "Profile",
+            icon: User,
+            path: "/student/profile",
+          },
+          {
+            label: "Settings",
+            icon: Settings,
+            path: "/student/settings",
+          },
+        ],
+      },
+    ];
+  }, [currentRole]);
 
+  // Flattened items for precise longest-prefix active route matching
+  const allNavItems = useMemo(() => {
+    return navigationSections.flatMap((s) => s.items);
+  }, [navigationSections]);
 
   /* =========================================================
-     NAVIGATION RENDERER
+     ACTIVE ROUTE MATCHING (NESTED AWARE)
      ========================================================= */
 
-  const renderNavigation = (items) => {
+  const isItemActive = (itemPath) => {
+    // Exact dashboard root matches
+    if (itemPath === "/student") {
+      return currentPath === "/student" || currentPath === "/student/dashboard";
+    }
+    if (itemPath === "/faculty") {
+      return currentPath === "/faculty" || currentPath === "/faculty/dashboard";
+    }
+    if (itemPath === "/management") {
+      return (
+        currentPath === "/management" || currentPath === "/management/dashboard"
+      );
+    }
 
-    return (
+    // Exact path match
+    if (currentPath === itemPath) return true;
 
-      <div className="sidebar-nav">
+    // Subpath prefix match (e.g. /student/knowledge/research highlights Knowledge)
+    if (currentPath.startsWith(itemPath + "/")) {
+      // If there is another navigation item with a longer, more specific matching path, prefer that
+      const hasMoreSpecific = allNavItems.some(
+        (other) =>
+          other.path !== itemPath &&
+          other.path.length > itemPath.length &&
+          (currentPath === other.path ||
+            currentPath.startsWith(other.path + "/"))
+      );
+      return !hasMoreSpecific;
+    }
 
-        {items.map((item) => {
-
-          const Icon = item.icon;
-
-          const active = isActive(item.path);
-
-
-          return (
-
-            <button
-              key={item.label}
-              type="button"
-              className={`sidebar-item ${
-                active ? "active" : ""
-              }`}
-              onClick={() => navigate(item.path)}
-              aria-current={active ? "page" : undefined}
-            >
-
-              <Icon
-                size={18}
-                strokeWidth={1.8}
-              />
-
-              <span>
-                {item.label}
-              </span>
-
-            </button>
-
-          );
-
-        })}
-
-      </div>
-
-    );
-
+    return false;
   };
 
-
-  /* =========================================================
-     SIDEBAR
-     ========================================================= */
+  const handleNavigate = (path) => {
+    navigate(path);
+    if (onCloseMobile) {
+      onCloseMobile();
+    }
+  };
 
   return (
+    <>
+      {/* MOBILE BACKDROP OVERLAY */}
+      <div
+        className={`sidebar-backdrop ${mobileOpen ? "visible" : ""}`}
+        onClick={onCloseMobile}
+        aria-hidden="true"
+      />
 
-    <aside className="nexus-sidebar">
+      {/* SIDEBAR CONTAINER */}
+      <aside
+        className={`nexus-sidebar ${isCollapsed ? "collapsed" : ""} ${
+          mobileOpen ? "mobile-open" : ""
+        }`}
+        aria-label="Campus Navigation"
+      >
+        {/* BRAND HEADER */}
+        <div className="sidebar-brand">
+          <button
+            type="button"
+            className="sidebar-brand-btn"
+            onClick={() => handleNavigate(`/${currentRole}`)}
+            title="NEXUS Campus Intelligence"
+          >
+            <div className="sidebar-logo">N</div>
 
+            {!isCollapsed && (
+              <div className="sidebar-brand-text">
+                <strong>NEXUS</strong>
+                <span>
+                  {currentRole === "faculty"
+                    ? "FACULTY INTELLIGENCE"
+                    : currentRole === "management"
+                    ? "MANAGEMENT INTELLIGENCE"
+                    : "CAMPUS INTELLIGENCE"}
+                </span>
+              </div>
+            )}
+          </button>
 
-      {/* =====================================================
-          BRAND
-      ===================================================== */}
-
-      <div className="sidebar-brand">
-
-        <div className="sidebar-logo">
-          N
+          {/* MOBILE CLOSE BUTTON */}
+          <button
+            type="button"
+            className="sidebar-mobile-close"
+            onClick={onCloseMobile}
+            aria-label="Close navigation"
+          >
+            <X size={18} />
+          </button>
         </div>
 
+        {/* NAVIGATION CONTENT */}
+        <div className="sidebar-content">
+          {navigationSections.map((section) => (
+            <div className="sidebar-section" key={section.title}>
+              {!isCollapsed ? (
+                <span className="sidebar-section-title">{section.title}</span>
+              ) : (
+                <div className="sidebar-section-divider" aria-hidden="true" />
+              )}
 
-        <div className="sidebar-brand-text">
+              <div className="sidebar-nav">
+                {section.items.map((item) => {
+                  const Icon = item.icon;
+                  const active = isItemActive(item.path);
 
-          <strong>
-            NEXUS
-          </strong>
+                  return (
+                    <button
+                      key={item.path}
+                      type="button"
+                      className={`sidebar-item ${active ? "active" : ""}`}
+                      onClick={() => handleNavigate(item.path)}
+                      aria-current={active ? "page" : undefined}
+                      title={isCollapsed ? item.label : undefined}
+                      aria-label={item.label}
+                    >
+                      <Icon size={19} strokeWidth={1.8} />
 
-          <span>
-            CAMPUS INTELLIGENCE
-          </span>
-
+                      {!isCollapsed && <span>{item.label}</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
 
-      </div>
+        {/* BOTTOM UTILITY / SYSTEM STATUS */}
+        <div className="sidebar-bottom">
+          <div className="sidebar-campus-status" title="NEXUS System Operational">
+            <span className="status-indicator" aria-hidden="true" />
 
-
-      {/* =====================================================
-          NAVIGATION
-      ===================================================== */}
-
-      <div className="sidebar-content">
-
-
-        {/* MAIN */}
-
-        <div className="sidebar-section">
-
-          <span className="sidebar-section-title">
-            MAIN
-          </span>
-
-          {renderNavigation(mainNavigation)}
-
-        </div>
-
-
-        {/* CAMPUS */}
-
-        <div className="sidebar-section">
-
-          <span className="sidebar-section-title">
-            CAMPUS
-          </span>
-
-          {renderNavigation(campusNavigation)}
-
-        </div>
-
-      </div>
-
-
-      {/* =====================================================
-          SYSTEM STATUS
-      ===================================================== */}
-
-      <div className="sidebar-bottom">
-
-        <div className="sidebar-campus-status">
-
-          <span className="status-indicator"></span>
-
-
-          <div>
-
-            <strong>
-              Campus Intelligence
-            </strong>
-
-            <span>
-              System operational
-            </span>
-
+            {!isCollapsed && (
+              <div>
+                <strong>Campus Intelligence</strong>
+                <span>System operational</span>
+              </div>
+            )}
           </div>
 
+          {/* DESKTOP COLLAPSE TOGGLE */}
+          {onToggleCollapse && (
+            <button
+              type="button"
+              className="sidebar-collapse-btn"
+              onClick={onToggleCollapse}
+              aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+              title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              {isCollapsed ? (
+                <ChevronRight size={16} />
+              ) : (
+                <>
+                  <ChevronLeft size={16} />
+                  <span>Collapse</span>
+                </>
+              )}
+            </button>
+          )}
         </div>
-
-      </div>
-
-    </aside>
-
+      </aside>
+    </>
   );
 }
-
 
 export default Sidebar;

@@ -1,0 +1,456 @@
+/* =========================================================
+   STUDENT SETTINGS
+   ========================================================= */
+
+.student-settings {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.settings-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.settings-eyebrow {
+  display: block;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.settings-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+.settings-save-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  font-size: 0.87rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.settings-save-btn:hover { background: #1d4ed8; }
+
+.settings-save-btn.saved {
+  background: #16a34a;
+}
+
+/* =========================================================
+   NOTICE
+   ========================================================= */
+
+.settings-notice {
+  font-size: 0.8rem;
+  color: #7a94b0;
+  background: #f4f8fc;
+  border: 1px solid #e1e9f2;
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.settings-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 16px;
+  padding: 10px;
+  position: sticky;
+  top: 108px;
+}
+
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: none;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #4a6080;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+}
+
+.settings-nav-item:hover {
+  background: #f4f8fc;
+  color: #102544;
+}
+
+.settings-nav-item.active {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.settings-content {
+  min-width: 0;
+}
+
+.settings-section h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.settings-section-note {
+  font-size: 0.83rem;
+  color: #7a94b0;
+  background: #f4f8fc;
+  border: 1px solid #e1e9f2;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* =========================================================
+   SETTINGS GROUP
+   ========================================================= */
+
+.settings-group {
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 22px;
+  border-bottom: 1px solid #f0f5fb;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row-disabled {
+  opacity: 0.55;
+}
+
+.settings-row > div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-row strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #102544;
+  margin-bottom: 3px;
+}
+
+.settings-row p {
+  font-size: 0.82rem;
+  color: #7a94b0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.settings-toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: block;
+}
+
+.settings-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.settings-toggle span {
+  position: absolute;
+  inset: 0;
+  background: #d4e2f0;
+  border-radius: 99px;
+  transition: background 0.2s;
+}
+
+.settings-toggle span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.settings-toggle input:checked + span {
+  background: #2563eb;
+}
+
+.settings-toggle input:checked + span::after {
+  transform: translateX(18px);
+}
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.settings-select {
+  padding: 8px 14px;
+  background: #f4f8fc;
+  border: 1px solid #d4e2f0;
+  border-radius: 9px;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #102544;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.settings-select:focus {
+  border-color: #93c5fd;
+}
+
+/* =========================================================
+   THEME PREVIEW
+   ========================================================= */
+
+.settings-theme-preview {
+  display: flex;
+  gap: 8px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 9px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+}
+
+.theme-option.light.active {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+}
+
+.theme-option.dark.disabled {
+  background: #f4f8fc;
+  color: #9ab0c8;
+  opacity: 0.5;
+}
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+   ========================================================= */
+
+.settings-shortcut-reference {
+  background: #f4f8fc;
+  border: 1px solid #e1e9f2;
+  border-radius: 14px;
+  padding: 20px 22px;
+}
+
+.settings-shortcut-reference h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 14px;
+}
+
+.shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shortcuts-list > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shortcuts-list kbd {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  background: #fff;
+  border: 1px solid #d4e2f0;
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: #2d4a6a;
+  white-space: nowrap;
+}
+
+.shortcuts-list span {
+  font-size: 0.85rem;
+  color: #4a6080;
+}
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.settings-action-btn {
+  padding: 8px 16px;
+  background: #f4f8fc;
+  border: 1px solid #d4e2f0;
+  border-radius: 9px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #4a6080;
+  cursor: not-allowed;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   DANGER ZONE
+   ========================================================= */
+
+.settings-danger-zone {
+  background: #fff;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.settings-danger-zone h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #dc2626;
+  margin: 0 0 8px;
+}
+
+.settings-danger-zone p {
+  font-size: 0.84rem;
+  color: #4a6080;
+  margin: 0 0 16px;
+}
+
+.settings-logout-btn {
+  padding: 9px 20px;
+  background: none;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #dc2626;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.settings-logout-btn:hover {
+  background: #fef2f2;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .student-settings {
+    padding: 24px 20px 60px;
+  }
+
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-nav {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+
+  .settings-nav-item {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .settings-nav-item span {
+    display: none;
+  }
+}

@@ -15,7 +15,10 @@ import {
   Users,
 } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+
 function StudentDashboard() {
+  const navigate = useNavigate();
   return (
     <div className="student-dashboard">
 
@@ -278,7 +281,7 @@ function StudentDashboard() {
 
             </div>
 
-            <button className="card-action">
+            <button className="card-action" onClick={() => navigate("/student/profile")}>
               View profile
               <ArrowUpRight size={17} />
             </button>
@@ -406,7 +409,7 @@ function StudentDashboard() {
 
             </div>
 
-            <button className="card-action">
+            <button className="card-action" onClick={() => navigate("/student/projects")}>
               View all
               <ArrowUpRight size={17} />
             </button>
@@ -417,7 +420,7 @@ function StudentDashboard() {
           <div className="project-list">
 
 
-            <div className="project-item">
+            <button className="project-item" type="button" onClick={() => navigate("/student/projects/nexus")}>
 
               <div className="project-symbol blue">
                 <Brain size={19} />
@@ -457,10 +460,10 @@ function StudentDashboard() {
 
               <ChevronRight size={18} />
 
-            </div>
+            </button>
 
 
-            <div className="project-item">
+            <button className="project-item" type="button" onClick={() => navigate("/student/projects/campus-intelligence")}>
 
               <div className="project-symbol purple">
                 <ChartNoAxesCombined size={19} />
@@ -500,10 +503,10 @@ function StudentDashboard() {
 
               <ChevronRight size={18} />
 
-            </div>
+            </button>
 
 
-            <div className="project-item">
+            <button className="project-item" type="button" onClick={() => navigate("/student/projects")}>
 
               <div className="project-symbol green">
                 <Users size={19} />
@@ -543,7 +546,7 @@ function StudentDashboard() {
 
               <ChevronRight size={18} />
 
-            </div>
+            </button>
 
           </div>
 
@@ -572,7 +575,7 @@ function StudentDashboard() {
 
           </div>
 
-          <button className="section-link">
+          <button className="section-link" onClick={() => navigate("/student/intelligence")}>
             Explore opportunities
             <ArrowUpRight size={17} />
           </button>

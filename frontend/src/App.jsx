@@ -49,6 +49,17 @@ import KnowledgeFaculty from "./campus/pages/Student/Knowledge/KnowledgeFaculty"
 import KnowledgeStudentWork from "./campus/pages/Student/Knowledge/KnowledgeStudentWork";
 
 // =========================================================
+// NEW STUDENT PAGES (Phase 4)
+// =========================================================
+
+import StudentProfile from "./campus/pages/Student/StudentProfile/StudentProfile";
+import StudentGoals from "./campus/pages/Student/StudentGoals/StudentGoals";
+import StudentProgress from "./campus/pages/Student/StudentProgress/StudentProgress";
+import AIMentor from "./campus/pages/Student/AIMentor/AIMentor";
+import StudentCommunity from "./campus/pages/Student/StudentCommunity/StudentCommunity";
+import StudentSettings from "./campus/pages/Student/StudentSettings/StudentSettings";
+
+// =========================================================
 // FACULTY / MANAGEMENT
 // =========================================================
 
@@ -97,6 +108,16 @@ function App() {
                 <StudentDashboard />
               </CampusLayout>
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/dashboard"
+          element={
+            <Navigate
+              to="/student"
+              replace
+            />
           }
         />
 
@@ -187,6 +208,17 @@ function App() {
 
         <Route
           path="/student/projects/explore/:projectId"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <ProjectDetails />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/projects/:projectId"
           element={
             <ProtectedRoute allowedRoles={["student"]}>
               <CampusLayout>
@@ -306,6 +338,102 @@ function App() {
 
 
         {/* =================================================
+            STUDENT PROFILE
+            ================================================= */}
+
+        <Route
+          path="/student/profile"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentProfile />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            STUDENT GOALS
+            ================================================= */}
+
+        <Route
+          path="/student/goals"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentGoals />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            STUDENT PROGRESS
+            ================================================= */}
+
+        <Route
+          path="/student/progress"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentProgress />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            AI MENTOR
+            ================================================= */}
+
+        <Route
+          path="/student/ai-mentor"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <AIMentor />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            COMMUNITY
+            ================================================= */}
+
+        <Route
+          path="/student/community"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentCommunity />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            SETTINGS
+            ================================================= */}
+
+        <Route
+          path="/student/settings"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentSettings />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
             FACULTY
             ================================================= */}
 
@@ -317,6 +445,16 @@ function App() {
                 <FacultyDashboard />
               </CampusLayout>
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/faculty/dashboard"
+          element={
+            <Navigate
+              to="/faculty"
+              replace
+            />
           }
         />
 
@@ -333,6 +471,16 @@ function App() {
                 <ManagementDashboard />
               </CampusLayout>
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/management/dashboard"
+          element={
+            <Navigate
+              to="/management"
+              replace
+            />
           }
         />
 

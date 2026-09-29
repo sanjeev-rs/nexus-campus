@@ -7,7 +7,6 @@ import {
   Target,
   Lightbulb,
   ArrowUpRight,
-  ChevronRight,
   Activity,
   Network,
   BookOpen,
@@ -16,7 +15,10 @@ import {
   Award,
 } from "lucide-react";
 
+import { useNavigate } from "react-router-dom";
+
 function StudentIntelligence() {
+  const navigate = useNavigate();
   return (
     <div className="student-intelligence">
 
@@ -193,7 +195,7 @@ function StudentIntelligence() {
               increase your project and opportunity matches.
             </p>
 
-            <button>
+            <button onClick={() => navigate("/student/goals")}>
               View development path
               <ArrowUpRight size={16} />
             </button>
@@ -225,7 +227,7 @@ function StudentIntelligence() {
 
           </div>
 
-          <button className="section-action">
+          <button className="section-action" onClick={() => navigate("/student/profile")}>
             View all skills
             <ArrowUpRight size={16} />
           </button>
@@ -465,7 +467,7 @@ function StudentIntelligence() {
               consistently across your projects and activity.
             </p>
 
-            <button>
+            <button onClick={() => navigate("/student/goals")}>
               Explore insight
               <ArrowUpRight size={16} />
             </button>

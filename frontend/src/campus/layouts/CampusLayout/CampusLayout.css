@@ -2,6 +2,10 @@
    NEXUS CAMPUS LAYOUT
    ========================================================= */
 
+:root {
+  --sidebar-width: 272px;
+}
+
 .campus-layout {
   width: 100%;
   min-height: 100vh;
@@ -19,8 +23,8 @@
   color: #102544;
 
   overflow-x: hidden;
+  position: relative;
 }
-
 
 /* =========================================================
    MAIN AREA
@@ -31,11 +35,15 @@
 
   flex: 1;
 
-  margin-left: 272px;
+  margin-left: var(--sidebar-width);
 
   position: relative;
-}
 
+  display: flex;
+  flex-direction: column;
+
+  transition: margin-left 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 /* =========================================================
    CONTENT
@@ -43,6 +51,8 @@
 
 .campus-content {
   width: 100%;
+
+  flex: 1;
 
   min-height: calc(100vh - 92px);
 
@@ -53,12 +63,15 @@
   box-sizing: border-box;
 }
 
-
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
 @media (max-width: 900px) {
+
+  .campus-layout {
+    --sidebar-width: 0px !important;
+  }
 
   .campus-main {
     margin-left: 0;
@@ -66,6 +79,7 @@
 
   .campus-content {
     padding-top: 76px;
+    min-height: calc(100vh - 76px);
   }
 
 }

@@ -5,10 +5,9 @@ import {
   ArrowUpRight,
   Brain,
   CheckCircle2,
-  Code2,
   Search,
   UserRoundCheck,
-  Users,
+  X,
 } from "lucide-react";
 
 import { useState } from "react";
@@ -16,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 const mentors = [
   {
+    id: "ananya-rao",
     name: "Dr. Ananya Rao",
     role: "Faculty Mentor",
     department: "AI & Data Science",
@@ -24,6 +24,7 @@ const mentors = [
     initials: "AR",
   },
   {
+    id: "karthik-menon",
     name: "Karthik Menon",
     role: "Senior Student Mentor",
     department: "Computer Science",
@@ -32,6 +33,7 @@ const mentors = [
     initials: "KM",
   },
   {
+    id: "priya-nair",
     name: "Dr. Priya Nair",
     role: "Faculty Mentor",
     department: "Computer Science",
@@ -40,6 +42,7 @@ const mentors = [
     initials: "PN",
   },
   {
+    id: "rahul-krishnan",
     name: "Rahul Krishnan",
     role: "Senior Student Mentor",
     department: "AI & Data Science",
@@ -53,6 +56,23 @@ function MentorNetwork() {
   const navigate = useNavigate();
 
   const [search, setSearch] = useState("");
+
+  /*
+   * requestState tracks each mentor's request status.
+   * Shape: { [mentorId]: "idle" | "requested" }
+   *
+   * No backend connection yet — UI-only acknowledgement.
+   * Replace the handleRequest body with a real API call when
+   * the backend mentor-request endpoint is available.
+   */
+  const [requestState, setRequestState] = useState({});
+
+  const handleRequest = (mentorId) => {
+    setRequestState((prev) => ({
+      ...prev,
+      [mentorId]: "requested",
+    }));
+  };
 
   const filteredMentors = mentors.filter((mentor) => {
     const value = search.toLowerCase();
@@ -109,7 +129,19 @@ function MentorNetwork() {
             placeholder="Search mentors by skill, department or name..."
             value={search}
             onChange={(event) => setSearch(event.target.value)}
+            aria-label="Search mentors"
           />
+
+          {search && (
+            <button
+              type="button"
+              className="mentor-search-clear"
+              onClick={() => setSearch("")}
+              aria-label="Clear search"
+            >
+              <X size={16} />
+            </button>
+          )}
 
         </div>
 
@@ -138,80 +170,104 @@ function MentorNetwork() {
         </div>
 
 
-        <div className="mentor-grid">
-
-          {filteredMentors.map((mentor) => (
-
-            <article
-              className="mentor-card"
-              key={mentor.name}
+        {filteredMentors.length === 0 ? (
+          <div className="mentor-empty-state">
+            <Search size={28} />
+            <h3>No mentors found</h3>
+            <p>Try a different search term or clear the filter.</p>
+            <button
+              type="button"
+              onClick={() => setSearch("")}
             >
+              Clear search
+            </button>
+          </div>
+        ) : (
+          <div className="mentor-grid">
 
-              <div className="mentor-card-top">
+            {filteredMentors.map((mentor) => {
+              const status = requestState[mentor.id] || "idle";
 
-                <div className="mentor-avatar">
-                  {mentor.initials}
-                </div>
+              return (
 
-                <span className="mentor-match">
-                  {mentor.match}% MATCH
-                </span>
+                <article
+                  className="mentor-card"
+                  key={mentor.id}
+                >
 
-              </div>
+                  <div className="mentor-card-top">
 
+                    <div className="mentor-avatar">
+                      {mentor.initials}
+                    </div>
 
-              <span className="mentor-role">
-                {mentor.role}
-              </span>
+                    <span className="mentor-match">
+                      {mentor.match}% MATCH
+                    </span>
 
-              <h3>
-                {mentor.name}
-              </h3>
-
-              <p className="mentor-department">
-                {mentor.department}
-              </p>
+                  </div>
 
 
-              <div className="mentor-expertise">
-
-                {mentor.expertise.map((skill) => (
-
-                  <span key={skill}>
-                    {skill}
+                  <span className="mentor-role">
+                    {mentor.role}
                   </span>
 
-                ))}
+                  <h3>
+                    {mentor.name}
+                  </h3>
 
-              </div>
+                  <p className="mentor-department">
+                    {mentor.department}
+                  </p>
 
 
-              <div className="mentor-card-footer">
+                  <div className="mentor-expertise">
 
-                <div className="mentor-availability">
-                  <span></span>
-                  Available for requests
-                </div>
+                    {mentor.expertise.map((skill) => (
 
-                <button
-                  className="request-mentor-button"
-                  onClick={() =>
-                    alert(
-                      `Mentor request initiated for ${mentor.name}`
-                    )
-                  }
-                >
-                  Request
-                  <ArrowUpRight size={15} />
-                </button>
+                      <span key={skill}>
+                        {skill}
+                      </span>
 
-              </div>
+                    ))}
 
-            </article>
+                  </div>
 
-          ))}
 
-        </div>
+                  <div className="mentor-card-footer">
+
+                    {status === "idle" ? (
+                      <>
+                        <div className="mentor-availability">
+                          <span></span>
+                          Available for requests
+                        </div>
+
+                        <button
+                          type="button"
+                          className="request-mentor-button"
+                          onClick={() => handleRequest(mentor.id)}
+                        >
+                          Request
+                          <ArrowUpRight size={15} />
+                        </button>
+                      </>
+                    ) : (
+                      <div className="mentor-requested-state">
+                        <CheckCircle2 size={16} />
+                        <span>Request sent</span>
+                      </div>
+                    )}
+
+                  </div>
+
+                </article>
+
+              );
+            })}
+
+          </div>
+        )}
 
       </section>
 
@@ -241,6 +297,7 @@ function MentorNetwork() {
         </div>
 
         <button
+          type="button"
           onClick={() => navigate("/student/projects/upload")}
         >
           Tell us about your project
