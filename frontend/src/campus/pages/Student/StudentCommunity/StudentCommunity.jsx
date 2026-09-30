@@ -3,12 +3,15 @@ import "./StudentCommunity.css";
 import {
   ArrowUpRight,
   Brain,
+  CheckCircle,
   Code2,
   FolderKanban,
   Heart,
   Lightbulb,
   MessageSquare,
+  Plus,
   Search,
+  Send,
   Sparkles,
   TrendingUp,
   Users,
@@ -33,7 +36,7 @@ const TOPICS = [
   { id: "projects", label: "Projects" },
 ];
 
-const DISCUSSIONS = [
+const INITIAL_DISCUSSIONS = [
   {
     id: 1,
     title: "Best resources for getting started with PyTorch?",
@@ -108,9 +111,31 @@ const DISCUSSIONS = [
   },
 ];
 
+const INITIAL_REPLIES = {
+  1: [
+    { id: 101, author: "Dr. Sarah Chen", avatar: "SC", time: "1 hour ago", text: "Start with the official 'Deep Learning with PyTorch: A 60 Minute Blitz'. It covers tensors and autograd thoroughly before jumping into neural nets." },
+    { id: 102, author: "Vikram S.", avatar: "V", time: "45 mins ago", text: "Also check out fast.ai chapter 1-4. Very hands-on and gets you training models in code right away." },
+  ],
+  2: [
+    { id: 201, author: "Prof. Michael Torres", avatar: "MT", time: "3 hours ago", text: "Look into transfer learning or few-shot techniques. Also cross-validation with stratified folds is essential when sample size is constrained." }
+  ],
+  3: [
+    { id: 301, author: "Nithya R.", avatar: "N", time: "18 hours ago", text: "Interested! I've been working with FastAPI backend microservices and Redis for distributed queueing." }
+  ],
+  4: [
+    { id: 401, author: "Academic Affairs", avatar: "AA", time: "20 hours ago", text: "Yes, opportunities on NEXUS integrate with department verified listings. Your profile intelligence score is automatically attached." }
+  ],
+  5: [
+    { id: 501, author: "Arjun K.", avatar: "A", time: "1 day ago", text: "React has much wider adoption in the campus labs, plus our shared component libraries are React-based." }
+  ],
+  6: [
+    { id: 601, author: "Dr. Sarah Chen", avatar: "SC", time: "2 days ago", text: "Use the NEXUS Knowledge submission template. It includes methodology, reproducibility checklist, and architecture diagrams." }
+  ]
+};
+
 const COMMUNITIES = [
   {
-    id: "ai-ds",
+    id: "ai",
     name: "AI & Data Science",
     description: "Machine learning, data, and AI projects",
     members: 142,
@@ -153,9 +178,25 @@ const ACTIVE_STUDENTS = [
 function StudentCommunity() {
   const navigate = useNavigate();
 
+  const [discussions, setDiscussions] = useState(INITIAL_DISCUSSIONS);
+  const [repliesMap, setRepliesMap] = useState(INITIAL_REPLIES);
   const [search, setSearch] = useState("");
   const [activeTopic, setActiveTopic] = useState("all");
   const [likedPosts, setLikedPosts] = useState(new Set());
+  
+  // Modals & Feedback
+  const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+  const [newTopic, setNewTopic] = useState("ai");
+  const [newExcerpt, setNewExcerpt] = useState("");
+  const [activeThread, setActiveThread] = useState(null);
+  const [replyText, setReplyText] = useState("");
+  const [toastMessage, setToastMessage] = useState(null);
+
+  const showToast = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3500);
+  };
 
   const toggleLike = (postId) => {
     setLikedPosts((prev) => {
@@ -169,8 +210,64 @@ function StudentCommunity() {
     });
   };
 
+  const handleCreatePost = (e) => {
+    e.preventDefault();
+    if (!newTitle.trim() || !newExcerpt.trim()) return;
+
+    const newPost = {
+      id: Date.now(),
+      title: newTitle.trim(),
+      author: "Alex Morgan",
+      avatar: "AM",
+      topic: newTopic,
+      replies: 0,
+      likes: 1,
+      time: "Just now",
+      excerpt: newExcerpt.trim(),
+    };
+
+    setDiscussions((prev) => [newPost, ...prev]);
+    setRepliesMap((prev) => ({ ...prev, [newPost.id]: [] }));
+    setLikedPosts((prev) => new Set(prev).add(newPost.id));
+    setNewTitle("");
+    setNewExcerpt("");
+    setIsNewPostModalOpen(false);
+    showToast("Discussion post published to campus feed.");
+  };
+
+  const handleAddReply = (e) => {
+    e.preventDefault();
+    if (!replyText.trim() || !activeThread) return;
+
+    const newReply = {
+      id: Date.now(),
+      author: "Alex Morgan",
+      avatar: "AM",
+      time: "Just now",
+      text: replyText.trim(),
+    };
+
+    setRepliesMap((prev) => ({
+      ...prev,
+      [activeThread.id]: [...(prev[activeThread.id] || []), newReply],
+    }));
+
+    setDiscussions((prev) =>
+      prev.map((d) =>
+        d.id === activeThread.id ? { ...d, replies: d.replies + 1 } : d
+      )
+    );
+
+    setActiveThread((prev) =>
+      prev ? { ...prev, replies: prev.replies + 1 } : null
+    );
+
+    setReplyText("");
+    showToast("Reply added to thread.");
+  };
+
   const filtered = useMemo(() => {
-    return DISCUSSIONS.filter((post) => {
+    return discussions.filter((post) => {
       const matchesTopic = activeTopic === "all" || post.topic === activeTopic;
       const q = search.toLowerCase().trim();
       const matchesSearch =
@@ -180,7 +277,7 @@ function StudentCommunity() {
         post.author.toLowerCase().includes(q);
       return matchesTopic && matchesSearch;
     });
-  }, [activeTopic, search]);
+  }, [discussions, activeTopic, search]);
 
   return (
     <div className="student-community">
@@ -267,11 +364,11 @@ function StudentCommunity() {
 
             <button
               type="button"
-              className="community-start-post"
-              disabled
-              title="Post discussions — coming soon"
+              className="community-start-post active-btn"
+              onClick={() => setIsNewPostModalOpen(true)}
+              title="Start a new discussion thread"
             >
-              <MessageSquare size={16} />
+              <Plus size={16} />
               Start a discussion
             </button>
 
@@ -337,8 +434,8 @@ function StudentCommunity() {
                     <button
                       type="button"
                       className="community-open-post"
-                      disabled
-                      title="Open discussion — coming soon"
+                      onClick={() => setActiveThread(post)}
+                      title="Open and reply to this discussion"
                     >
                       Read thread
                       <ArrowUpRight size={14} />
@@ -381,13 +478,14 @@ function StudentCommunity() {
             <div className="community-list">
               {COMMUNITIES.map((community) => {
                 const Icon = community.icon;
+                const isSelected = activeTopic === community.id;
                 return (
                   <button
                     key={community.id}
                     type="button"
-                    className="community-item"
-                    disabled
-                    title="Join communities — coming soon"
+                    className={`community-item ${isSelected ? "selected-community" : ""}`}
+                    onClick={() => setActiveTopic(community.id)}
+                    title={`Filter by ${community.name}`}
                   >
                     <div className={`community-icon community-icon-${community.accent}`}>
                       <Icon size={17} />
@@ -446,6 +544,170 @@ function StudentCommunity() {
         </aside>
 
       </div>
+
+      {/* =========================================================
+          NEW DISCUSSION MODAL
+          ========================================================= */}
+      {isNewPostModalOpen && (
+        <div className="comm-modal-backdrop" onClick={() => setIsNewPostModalOpen(false)}>
+          <div className="comm-modal-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="comm-modal-header">
+              <div>
+                <span className="comm-modal-eyebrow">CAMPUS FORUM</span>
+                <h2>Start a New Discussion</h2>
+              </div>
+              <button
+                type="button"
+                className="comm-modal-close"
+                onClick={() => setIsNewPostModalOpen(false)}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreatePost} className="comm-modal-form">
+              <div className="comm-form-group">
+                <label htmlFor="comm-post-title">Discussion Title</label>
+                <input
+                  id="comm-post-title"
+                  type="text"
+                  placeholder="e.g. Best architecture patterns for multi-tenant telemetry..."
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  required
+                  autoFocus
+                />
+              </div>
+
+              <div className="comm-form-group">
+                <label htmlFor="comm-post-topic">Category Topic</label>
+                <select
+                  id="comm-post-topic"
+                  value={newTopic}
+                  onChange={(e) => setNewTopic(e.target.value)}
+                >
+                  <option value="ai">AI &amp; Data</option>
+                  <option value="dev">Development</option>
+                  <option value="research">Research</option>
+                  <option value="career">Career</option>
+                  <option value="projects">Projects</option>
+                </select>
+              </div>
+
+              <div className="comm-form-group">
+                <label htmlFor="comm-post-body">Content / Question</label>
+                <textarea
+                  id="comm-post-body"
+                  rows={4}
+                  placeholder="Provide context, problem statements, or questions for your campus peers..."
+                  value={newExcerpt}
+                  onChange={(e) => setNewExcerpt(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="comm-modal-actions">
+                <button
+                  type="button"
+                  className="comm-btn-cancel"
+                  onClick={() => setIsNewPostModalOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="comm-btn-submit"
+                  disabled={!newTitle.trim() || !newExcerpt.trim()}
+                >
+                  Post Discussion
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================
+          THREAD VIEWER & REPLY MODAL
+          ========================================================= */}
+      {activeThread && (
+        <div className="comm-modal-backdrop" onClick={() => setActiveThread(null)}>
+          <div className="comm-modal-dialog comm-thread-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="comm-modal-header">
+              <div className="comm-thread-meta">
+                <span className={`community-topic-tag topic-${activeThread.topic}`}>
+                  {TOPICS.find((t) => t.id === activeThread.topic)?.label || activeThread.topic}
+                </span>
+                <span className="comm-thread-time">{activeThread.time}</span>
+              </div>
+              <button
+                type="button"
+                className="comm-modal-close"
+                onClick={() => setActiveThread(null)}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="comm-thread-original-post">
+              <div className="community-post-author">
+                <div className="community-avatar">{activeThread.avatar}</div>
+                <div>
+                  <strong>{activeThread.author}</strong>
+                  <span>Author</span>
+                </div>
+              </div>
+              <h2>{activeThread.title}</h2>
+              <p>{activeThread.excerpt}</p>
+            </div>
+
+            <div className="comm-thread-replies-section">
+              <h3>Responses ({repliesMap[activeThread.id]?.length || 0})</h3>
+              
+              <div className="comm-replies-list">
+                {(repliesMap[activeThread.id] || []).length > 0 ? (
+                  repliesMap[activeThread.id].map((reply) => (
+                    <div key={reply.id} className="comm-reply-card">
+                      <div className="comm-reply-header">
+                        <div className="comm-reply-avatar">{reply.avatar}</div>
+                        <strong>{reply.author}</strong>
+                        <span>{reply.time}</span>
+                      </div>
+                      <p className="comm-reply-text">{reply.text}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="comm-no-replies">No replies yet. Be the first to respond!</p>
+                )}
+              </div>
+
+              <form onSubmit={handleAddReply} className="comm-reply-composer">
+                <input
+                  type="text"
+                  placeholder="Write a response..."
+                  value={replyText}
+                  onChange={(e) => setReplyText(e.target.value)}
+                  required
+                />
+                <button type="submit" disabled={!replyText.trim()}>
+                  <Send size={15} />
+                  Reply
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================
+          TOAST FEEDBACK
+          ========================================================= */}
+      {toastMessage && (
+        <div className="comm-toast-notification">
+          <CheckCircle size={17} />
+          <span>{toastMessage}</span>
+        </div>
+      )}
 
     </div>
   );

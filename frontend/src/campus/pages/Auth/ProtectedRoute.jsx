@@ -21,7 +21,7 @@ function ProtectedRoute({ children, allowedRoles }) {
   // Protect against corrupted localStorage data
   try {
     auth = JSON.parse(storedAuth);
-  } catch (error) {
+  } catch {
     console.error("Invalid NEXUS authentication session.");
 
     localStorage.removeItem("nexusAuth");

@@ -55,6 +55,8 @@ import KnowledgeStudentWork from "./campus/pages/Student/Knowledge/KnowledgeStud
 import StudentProfile from "./campus/pages/Student/StudentProfile/StudentProfile";
 import StudentGoals from "./campus/pages/Student/StudentGoals/StudentGoals";
 import StudentProgress from "./campus/pages/Student/StudentProgress/StudentProgress";
+import StudentRoadmap from "./campus/pages/Student/StudentRoadmap/StudentRoadmap";
+import StudentRoutine from "./campus/pages/Student/StudentRoutine/StudentRoutine";
 import AIMentor from "./campus/pages/Student/AIMentor/AIMentor";
 import StudentCommunity from "./campus/pages/Student/StudentCommunity/StudentCommunity";
 import StudentSettings from "./campus/pages/Student/StudentSettings/StudentSettings";
@@ -379,6 +381,38 @@ function App() {
             <ProtectedRoute allowedRoles={["student"]}>
               <CampusLayout>
                 <StudentProgress />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            STUDENT ROADMAP
+            ================================================= */}
+
+        <Route
+          path="/student/roadmap"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentRoadmap />
+              </CampusLayout>
+            </ProtectedRoute>
+          }
+        />
+
+
+        {/* =================================================
+            STUDENT ROUTINE
+            ================================================= */}
+
+        <Route
+          path="/student/routine"
+          element={
+            <ProtectedRoute allowedRoles={["student"]}>
+              <CampusLayout>
+                <StudentRoutine />
               </CampusLayout>
             </ProtectedRoute>
           }

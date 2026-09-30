@@ -1136,7 +1136,8 @@ function StudentProjects() {
 
           <article
             className="recommended-project"
-            onClick={() => navigate("/student/projects/explore")}
+            onClick={() => navigate("/student/projects/explore/smart-campus-analytics")}
+            style={{ cursor: "pointer" }}
           >
 
             <div className="recommended-icon blue">
@@ -1166,7 +1167,8 @@ function StudentProjects() {
 
           <article
             className="recommended-project"
-            onClick={() => navigate("/student/projects/explore")}
+            onClick={() => navigate("/student/projects/explore/ai-research-lab")}
+            style={{ cursor: "pointer" }}
           >
 
             <div className="recommended-icon purple">
@@ -1196,7 +1198,8 @@ function StudentProjects() {
 
           <article
             className="recommended-project"
-            onClick={() => navigate("/student/projects/explore")}
+            onClick={() => navigate("/student/projects/explore/open-source-campus")}
+            style={{ cursor: "pointer" }}
           >
 
             <div className="recommended-icon green">

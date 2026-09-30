@@ -647,6 +647,80 @@ const projectData = {
       },
     ],
   },
+
+  "open-source-campus": {
+    title: "Open Source Campus",
+    category: "Community / Tooling",
+    status: "Active",
+    description:
+      "A student-led open source collective building reusable developer tools, campus libraries, and shared utilities for university developers.",
+    department: "Computer Science",
+    departmentId: "CSE-02",
+    projectType: "Open Source Initiative",
+    academicYear: "2026",
+    startDate: "January 2026",
+    endDate: "In progress",
+    problem:
+      "Student developers frequently build redundant utilities or struggle to find active campus contributors for modular open source repositories.",
+    objective:
+      "Maintain a vetted institutional registry of student open-source repositories with standardized CI/CD pipelines, documentation templates, and mentorship.",
+    technologies: ["React", "TypeScript", "GitHub Actions", "Python", "Node.js"],
+    githubUrl: "https://github.com/nexus-campus/open-source-campus",
+    publishedUrl: null,
+    mentor: {
+      name: "Dr. Elena Rostova",
+      designation: "Professor",
+      department: "Computer Science",
+      departmentId: "CSE-01",
+      email: "elena.rostova@campus.edu",
+    },
+    members: [
+      {
+        name: "Devon Reed",
+        role: "Community Lead",
+        department: "Computer Science",
+        year: "III Year",
+        email: "devon.reed@campus.edu",
+        phone: "+91 98765 30001",
+      },
+      {
+        name: "Tara Nair",
+        role: "Maintainer",
+        department: "AI & Data Science",
+        year: "IV Year",
+        email: "tara.nair@campus.edu",
+        phone: "+91 98765 30002",
+      },
+    ],
+    documents: [
+      { name: "Contribution Guide", type: "PDF", url: null },
+      { name: "Code of Conduct", type: "PDF", url: null },
+    ],
+    milestones: [
+      {
+        title: "Repository governance established",
+        description: "Contribution guidelines and automated lint workflows configured.",
+        date: "Jan 2026",
+      },
+      {
+        title: "Campus component library release",
+        description: "Reusable UI widgets deployed for student projects.",
+        date: "Mar 2026",
+      },
+      {
+        title: "Summer Code Camp",
+        description: "Mentoring 20 junior developers in Git workflows.",
+        date: "May 2026",
+      },
+    ],
+    dna: [
+      { label: "Technical depth", value: 82 },
+      { label: "Problem solving", value: 85 },
+      { label: "Collaboration", value: 96 },
+      { label: "Research", value: 74 },
+      { label: "Real-world impact", value: 90 },
+    ],
+  },
 };
 
 

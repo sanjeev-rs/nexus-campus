@@ -111,6 +111,8 @@ function Topbar({
     if (currentPath.startsWith("/student/profile")) return { eyebrow: "NEXUS / STUDENT", title: "Your Profile" };
     if (currentPath.startsWith("/student/goals")) return { eyebrow: "NEXUS / DEVELOPMENT", title: "Development Path" };
     if (currentPath.startsWith("/student/progress")) return { eyebrow: "NEXUS / DEVELOPMENT", title: "Your Progress" };
+    if (currentPath.startsWith("/student/roadmap")) return { eyebrow: "NEXUS / DEVELOPMENT", title: "Academic & Career Roadmap" };
+    if (currentPath.startsWith("/student/routine")) return { eyebrow: "NEXUS / DEVELOPMENT", title: "Campus Routine & Schedule" };
     if (currentPath.startsWith("/student/ai-mentor")) return { eyebrow: "NEXUS / AI MENTOR", title: "Your AI Mentor" };
     if (currentPath.startsWith("/student/community")) return { eyebrow: "NEXUS / STUDENT", title: "Campus Community" };
     if (currentPath.startsWith("/student/settings")) return { eyebrow: "NEXUS / STUDENT", title: "Settings" };

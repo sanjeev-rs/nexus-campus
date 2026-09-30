@@ -1976,3 +1976,209 @@ button.project-item {
   padding: 0;
   color: inherit;
 }
+
+/* =========================================================
+   STUDENT QUICK SHORTCUTS STRIP
+   ========================================================= */
+
+.student-quick-shortcuts {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.shortcut-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1e3a5a;
+  background: #ffffff;
+  border: 1px solid #dce7f2;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 1px 4px rgba(16, 37, 68, 0.04);
+}
+
+.shortcut-chip:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1474df;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   NEXT BEST ACTION CARD
+   ========================================================= */
+
+.student-nba-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f4f8fe 100%);
+  border: 1px solid #dbeafe;
+  border-left: 4px solid #1474df;
+  border-radius: 16px;
+  padding: 22px 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(20, 116, 223, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nba-card-content {
+  flex: 1;
+}
+
+.nba-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #1474df;
+  margin-bottom: 6px;
+}
+
+.student-nba-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 6px;
+}
+
+.student-nba-card p {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 780px;
+}
+
+.nba-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .student-nba-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nba-card-actions {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nba-card-actions > * {
+    flex: 1;
+  }
+}
+
+/* =========================================================
+   CAMPUS KNOWLEDGE GRID (ON DASHBOARD)
+   ========================================================= */
+
+.dashboard-knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-knowledge-card {
+  background: #ffffff;
+  border: 1px solid #e2eaf4;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(16, 37, 68, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.16s, border-color 0.16s, box-shadow 0.16s;
+}
+
+.dashboard-knowledge-card:hover {
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+  box-shadow: 0 8px 24px rgba(16, 37, 68, 0.08);
+}
+
+.d-knowledge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.d-knowledge-type {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.d-knowledge-type.blue { background: #eff6ff; color: #1d4ed8; }
+.d-knowledge-type.green { background: #f0fdf4; color: #15803d; }
+.d-knowledge-type.orange { background: #fff7ed; color: #c2410c; }
+.d-knowledge-type.purple { background: #faf5ff; color: #7c3aed; }
+.d-knowledge-type.indigo { background: #eef2ff; color: #4338ca; }
+.d-knowledge-type.cyan { background: #ecfeff; color: #0e7490; }
+
+.d-knowledge-dept {
+  font-size: 0.74rem;
+  color: #64748b;
+}
+
+.dashboard-knowledge-card h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+
+.dashboard-knowledge-card p {
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0 0 18px;
+  flex: 1;
+}
+
+.d-knowledge-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+.d-knowledge-techs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.d-tech-tag {
+  font-size: 0.72rem;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.d-arrow {
+  color: #1474df;
+  flex-shrink: 0;
+}
+

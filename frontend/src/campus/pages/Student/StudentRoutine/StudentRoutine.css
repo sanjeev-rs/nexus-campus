@@ -1,0 +1,537 @@
+/* =========================================================
+   NEXUS CAMPUS — STUDENT ROUTINE STYLES
+   Weekly Timetable, Lab Schedules & Advising Blocks
+   ========================================================= */
+
+.student-routine-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 36px 80px;
+  box-sizing: border-box;
+  color: var(--nx-navy, #102544);
+  position: relative;
+}
+
+/* =========================================================
+   NAVIGATION & BREADCRUMBS
+   ========================================================= */
+
+.routine-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.routine-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #1474df;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.routine-back-btn:hover {
+  background: #eff6ff;
+}
+
+.routine-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.routine-breadcrumbs .crumb {
+  cursor: pointer;
+}
+
+.routine-breadcrumbs .crumb:hover {
+  color: #1474df;
+}
+
+.routine-breadcrumbs .current {
+  color: #102544;
+  font-weight: 600;
+}
+
+/* =========================================================
+   HERO BANNER
+   ========================================================= */
+
+.routine-hero {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f8fe 100%);
+  border: 1px solid #dce7f2;
+  border-radius: 20px;
+  padding: 36px 40px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(16, 37, 68, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  overflow: hidden;
+}
+
+.routine-hero-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(20, 116, 223, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.routine-hero-content {
+  max-width: 760px;
+  position: relative;
+  z-index: 2;
+}
+
+.routine-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.routine-eyebrow {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1474df;
+}
+
+.routine-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #15803d;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+.routine-hero h1 {
+  font-size: clamp(1.85rem, 3.2vw, 2.45rem);
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 10px;
+  letter-spacing: -0.028em;
+  line-height: 1.18;
+}
+
+.routine-hero h1 span {
+  color: #1474df;
+}
+
+.routine-hero p {
+  font-size: 0.96rem;
+  color: #4a5d78;
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+
+.routine-stat-chips {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.routine-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.routine-chip.highlight {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #c2410c;
+  font-weight: 600;
+}
+
+.routine-hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   HABIT RADAR STRIP
+   ========================================================= */
+
+.routine-habits-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.habit-card {
+  background: #ffffff;
+  border: 1px solid #e2eaf4;
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(16, 37, 68, 0.03);
+}
+
+.habit-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.habit-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.habit-trend {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.habit-trend.positive { background: #dcfce7; color: #15803d; }
+.habit-trend.neutral { background: #f1f5f9; color: #475569; }
+
+.habit-value {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #102544;
+}
+
+/* =========================================================
+   DAY TABS
+   ========================================================= */
+
+.day-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #dce7f2;
+  margin-bottom: 28px;
+  overflow-x: auto;
+  padding-bottom: 1px;
+}
+
+.day-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #64748b;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.day-tab-btn:hover {
+  color: #1474df;
+}
+
+.day-tab-btn.active {
+  color: #1474df;
+  border-bottom-color: #1474df;
+}
+
+.day-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 7px;
+  border-radius: 12px;
+}
+
+.day-tab-btn.active .day-count {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* =========================================================
+   SCHEDULE SECTION
+   ========================================================= */
+
+.routine-schedule-section {
+  background: #ffffff;
+  border: 1px solid #e2eaf4;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(16, 37, 68, 0.04);
+}
+
+.schedule-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.schedule-header-row h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 4px;
+}
+
+.schedule-header-row p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.schedule-timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schedule-slot-card {
+  display: grid;
+  grid-template-columns: 200px 1fr 140px;
+  gap: 20px;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px 22px;
+  transition: all 0.15s;
+}
+
+.schedule-slot-card:hover {
+  background: #ffffff;
+  border-color: #bfdbfe;
+  box-shadow: 0 4px 16px rgba(16, 37, 68, 0.06);
+}
+
+.schedule-slot-card.lecture { border-left: 4px solid #1474df; }
+.schedule-slot-card.lab { border-left: 4px solid #7c3aed; }
+.schedule-slot-card.project { border-left: 4px solid #16a34a; }
+.schedule-slot-card.advising { border-left: 4px solid #ea580c; }
+
+.slot-time-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.clock-ico {
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.slot-time-col strong {
+  font-size: 0.92rem;
+  color: #102544;
+}
+
+.slot-type-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.slot-type-badge.lecture { background: #eff6ff; color: #1d4ed8; }
+.slot-type-badge.lab { background: #faf5ff; color: #7c3aed; }
+.slot-type-badge.project { background: #f0fdf4; color: #15803d; }
+.slot-type-badge.advising { background: #fff7ed; color: #c2410c; }
+
+.slot-details-col h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #102544;
+  margin: 0 0 6px;
+}
+
+.slot-location-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: #64748b;
+  flex-wrap: wrap;
+}
+
+.slot-location-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.slot-action-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.slot-status-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.04em;
+}
+
+.slot-status-pill.completed { background: #dcfce7; color: #15803d; }
+.slot-status-pill.upcoming { background: #e0f2fe; color: #0369a1; }
+.slot-status-pill.scheduled { background: #ffedd5; color: #c2410c; }
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.routine-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 37, 68, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.routine-dialog {
+  width: 100%;
+  max-width: 500px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 32px;
+  box-shadow: 0 20px 60px rgba(16, 37, 68, 0.2);
+}
+
+.routine-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.routine-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #102544;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(16, 37, 68, 0.22);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+  font-size: 0.92rem;
+  font-weight: 500;
+  animation: slideInToast 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.routine-toast .toast-icon {
+  color: #4ade80;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .routine-habits-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .schedule-slot-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .slot-action-col {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 860px) {
+  .student-routine-page {
+    padding: 24px 20px 60px;
+  }
+
+  .routine-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+
+  .routine-hero-actions {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .routine-hero-actions > * {
+    flex: 1;
+  }
+}
+
+@media (max-width: 580px) {
+  .routine-habits-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .routine-hero-actions {
+    flex-direction: column;
+  }
+}

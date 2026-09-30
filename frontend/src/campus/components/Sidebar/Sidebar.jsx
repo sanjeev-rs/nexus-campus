@@ -3,11 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   BookOpen,
   Bot,
+  Calendar,
   ChevronLeft,
   ChevronRight,
   Compass,
   FolderKanban,
   Home,
+  Milestone,
   Network,
   PlusCircle,
   Settings,
@@ -107,6 +109,16 @@ function Sidebar({
             label: "Progress",
             icon: TrendingUp,
             path: "/student/progress",
+          },
+          {
+            label: "Roadmap",
+            icon: Milestone,
+            path: "/student/roadmap",
+          },
+          {
+            label: "Routine",
+            icon: Calendar,
+            path: "/student/routine",
           },
           {
             label: "Goals",

@@ -499,6 +499,11 @@ function StudentIntelligence() {
               leadership opportunities.
             </p>
 
+            <button onClick={() => navigate("/student/knowledge/guides")}>
+              View campus guides
+              <ArrowUpRight size={16} />
+            </button>
+
           </article>
 
 
@@ -524,6 +529,11 @@ function StudentIntelligence() {
               NEXUS has identified multiple opportunities that
               align with your current technical profile.
             </p>
+
+            <button onClick={() => navigate("/student/projects/mentors")}>
+              Explore matched opportunities
+              <ArrowUpRight size={16} />
+            </button>
 
           </article>
 
