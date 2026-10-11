@@ -77,10 +77,63 @@ function Topbar({
 
   const pageMeta = useMemo(() => {
     if (currentPath.startsWith("/management")) {
+      if (currentPath === "/management" || currentPath === "/management/dashboard") {
+        return { eyebrow: "NEXUS / MANAGEMENT", title: "Institutional Intelligence Overview" };
+      }
+      if (currentPath.startsWith("/management/skill-radar")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Campus Skill Radar" };
+      if (currentPath.startsWith("/management/student-growth")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Student Growth Analytics" };
+      if (currentPath.startsWith("/management/activity")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Institutional Activity" };
+      if (currentPath.startsWith("/management/skill-gaps") || currentPath.startsWith("/management/gaps")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Capability & Skill Gaps" };
+      if (currentPath.startsWith("/management/technology-trends") || currentPath.startsWith("/management/trends")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Technology Trends" };
+      if (currentPath.startsWith("/management/departments")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Department Performance" };
+      if (currentPath.startsWith("/management/outcomes")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Academic Outcomes" };
+      if (currentPath.startsWith("/management/programs")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Program Effectiveness" };
+      if (currentPath.startsWith("/management/interventions")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Intervention Analytics" };
+      if (currentPath.startsWith("/management/projects")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Project Ecosystem" };
+      if (currentPath.startsWith("/management/project-dna")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Institutional Project DNA" };
+      if (currentPath.startsWith("/management/research")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Research Intelligence" };
+      if (currentPath.startsWith("/management/faculty-expertise") || currentPath.startsWith("/management/expertise")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Faculty Expertise Map" };
+      if (currentPath.startsWith("/management/ip")) return { eyebrow: "NEXUS / MANAGEMENT", title: "IP & Innovation Pipeline" };
+      if (currentPath.startsWith("/management/duplication")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Project Duplication Analysis" };
+      if (currentPath.startsWith("/management/decision-support") || currentPath.startsWith("/management/support")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Decision Support Workspace" };
+      if (currentPath.startsWith("/management/missions")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Campus Missions" };
+      if (currentPath.startsWith("/management/opportunities")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Opportunity Intelligence" };
+      if (currentPath.startsWith("/management/training")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Workshop & Training Planning" };
+      if (currentPath.startsWith("/management/resources")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Resource Allocation & Cap-Ex" };
+      if (currentPath.startsWith("/management/failure-memory")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Institutional Failure Memory" };
+      if (currentPath.startsWith("/management/knowledge-graph")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Campus Knowledge Graph" };
+      if (currentPath.startsWith("/management/institutional-learning") || currentPath.startsWith("/management/learning")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Longitudinal Institutional Learning" };
+      if (currentPath.startsWith("/management/knowledge-retention") || currentPath.startsWith("/management/retention")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Knowledge Retention Index" };
+      if (currentPath.startsWith("/management/reports")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Executive Reports" };
+      if (currentPath.startsWith("/management/analytics")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Institutional Analytics" };
+      if (currentPath.startsWith("/management/alerts")) return { eyebrow: "NEXUS / MANAGEMENT", title: "Alerts & Attention Center" };
       return { eyebrow: "NEXUS / MANAGEMENT", title: "Institutional Intelligence" };
     }
 
     if (currentPath.startsWith("/faculty")) {
+      if (currentPath === "/faculty" || currentPath === "/faculty/dashboard") {
+        return { eyebrow: "NEXUS / FACULTY", title: "Faculty Intelligence Overview" };
+      }
+      if (currentPath.startsWith("/faculty/advisees")) return { eyebrow: "NEXUS / FACULTY", title: "My Advisees & Supervision" };
+      if (currentPath.startsWith("/faculty/growth")) return { eyebrow: "NEXUS / FACULTY", title: "Student Growth Analytics" };
+      if (currentPath.startsWith("/faculty/skills")) return { eyebrow: "NEXUS / FACULTY", title: "Skill & Competency Intelligence" };
+      if (currentPath.startsWith("/faculty/at-risk")) return { eyebrow: "NEXUS / FACULTY", title: "At-Risk Student Intelligence" };
+      if (currentPath.startsWith("/faculty/knowledge-dna")) return { eyebrow: "NEXUS / FACULTY", title: "Student Knowledge DNA" };
+      if (currentPath.startsWith("/faculty/reviews")) return { eyebrow: "NEXUS / FACULTY", title: "Project Review Pipeline" };
+      if (currentPath.startsWith("/faculty/project-dna")) return { eyebrow: "NEXUS / FACULTY", title: "Project DNA & Architecture" };
+      if (currentPath.startsWith("/faculty/research")) return { eyebrow: "NEXUS / FACULTY", title: "Research & Faculty Expertise" };
+      if (currentPath.startsWith("/faculty/project-discovery")) return { eyebrow: "NEXUS / FACULTY", title: "Semantic Project Discovery" };
+      if (currentPath.startsWith("/faculty/matching")) return { eyebrow: "NEXUS / FACULTY", title: "Mentor & Project Matching" };
+      if (currentPath.startsWith("/faculty/interventions")) return { eyebrow: "NEXUS / FACULTY", title: "Intervention Management" };
+      if (currentPath.startsWith("/faculty/advising")) return { eyebrow: "NEXUS / FACULTY", title: "Advising & Office Hours" };
+      if (currentPath.startsWith("/faculty/mentoring-history")) return { eyebrow: "NEXUS / FACULTY", title: "Mentoring History & Logs" };
+      if (currentPath.startsWith("/faculty/recommendations")) return { eyebrow: "NEXUS / FACULTY", title: "Faculty Recommendations & Endorsements" };
+      if (currentPath.startsWith("/faculty/failure-memory")) return { eyebrow: "NEXUS / FACULTY", title: "Institutional Failure Memory" };
+      if (currentPath.startsWith("/faculty/knowledge-graph")) return { eyebrow: "NEXUS / FACULTY", title: "Campus Knowledge Graph" };
+      if (currentPath.startsWith("/faculty/technical-problems")) return { eyebrow: "NEXUS / FACULTY", title: "Campus Technical Problem Statements" };
+      if (currentPath.startsWith("/faculty/institutional-learning")) return { eyebrow: "NEXUS / FACULTY", title: "Institutional Learning & Evolution" };
+      if (currentPath.startsWith("/faculty/notifications")) return { eyebrow: "NEXUS / FACULTY", title: "Faculty Notifications & Alerts" };
+      if (currentPath.startsWith("/faculty/profile")) return { eyebrow: "NEXUS / FACULTY", title: "Faculty Academic Profile" };
       return { eyebrow: "NEXUS / FACULTY", title: "Academic Intelligence" };
     }
 
